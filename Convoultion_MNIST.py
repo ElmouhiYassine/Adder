@@ -34,7 +34,7 @@ def add_noise(binary_image, p=0.1):
     return noisy
 
 
-# Function to ternarize image
+# Function to ternarize image ( 1 --> 1, 0 --> -1)
 def ternarize(image):
     return np.where(image == 1, 1, -1)
 

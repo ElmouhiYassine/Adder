@@ -49,7 +49,7 @@ def adder(A, B, logic_system):
             raise ValueError(f"Inputs must be in {allowed_digits}")
 
     S = [0] * N
-    C = 0  # Initial carry
+    C = -1  # Initial carry
 
     for i in range(N):
         # sum: S[i] = A[i] XOR B[i] XOR C[i-1]
@@ -83,8 +83,9 @@ def test_adder():
     print(f"Ternary: {A_tern} + {B_tern} = {S_tern}, Carry = {C_tern}")
 
     # Ternary test with unknown (U = 0)
-    A_tern_u = [1, 0]
-    B_tern_u = [-1, 1]
+    A_tern_u = [-1, -1, 1]
+    B_tern_u = [0, -1, 1]
+
     S_tern_u, C_tern_u = adder(A_tern_u, B_tern_u, ternary_logic)
     print(f"Ternary with U: {A_tern_u} + {B_tern_u} = {S_tern_u}, Carry = {C_tern_u}")
 

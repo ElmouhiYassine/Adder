@@ -1,0 +1,392 @@
+{
+  "0.1": {
+    "pessimistic": {
+      "raw": {
+        "accuracy": 0.9423076923076923,
+        "f1_score": 0.9443933537289098,
+        "uncertainty_rate": 0.0,
+        "true_positive": 104,
+        "true_negative": 533,
+        "false_positive": 31,
+        "false_negative": 8,
+        "uncertain": 0
+      },
+      "min": {
+        "accuracy": 0.9423076923076923,
+        "f1_score": 0.9443933537289098,
+        "uncertainty_rate": 0.0,
+        "true_positive": 104,
+        "true_negative": 533,
+        "false_positive": 31,
+        "false_negative": 8,
+        "uncertain": 0
+      },
+      "max": {
+        "accuracy": 0.9423076923076923,
+        "f1_score": 0.9443933537289098,
+        "uncertainty_rate": 0.0,
+        "true_positive": 104,
+        "true_negative": 533,
+        "false_positive": 31,
+        "false_negative": 8,
+        "uncertain": 0
+      }
+    },
+    "kleene_strong": {
+      "raw": {
+        "accuracy": 0.6405325443786982,
+        "f1_score": 0.7808831934584443,
+        "uncertainty_rate": 0.3594674556213018,
+        "true_positive": 72,
+        "true_negative": 361,
+        "false_positive": 0,
+        "false_negative": 0,
+        "uncertain": 243
+      },
+      "min": {
+        "accuracy": 0.9408284023668639,
+        "f1_score": 0.9354099192601966,
+        "uncertainty_rate": 0.0,
+        "true_positive": 72,
+        "true_negative": 564,
+        "false_positive": 0,
+        "false_negative": 40,
+        "uncertain": 0
+      },
+      "max": {
+        "accuracy": 0.6997041420118343,
+        "f1_score": 0.7381345609844979,
+        "uncertainty_rate": 0.0,
+        "true_positive": 112,
+        "true_negative": 361,
+        "false_positive": 203,
+        "false_negative": 0,
+        "uncertain": 0
+      }
+    },
+    "quasi": {
+      "raw": {
+        "accuracy": 0.9289940828402367,
+        "f1_score": 0.9336814015547048,
+        "uncertainty_rate": 0.0,
+        "true_positive": 112,
+        "true_negative": 516,
+        "false_positive": 48,
+        "false_negative": 0,
+        "uncertain": 0
+      },
+      "min": {
+        "accuracy": 0.9289940828402367,
+        "f1_score": 0.9336814015547048,
+        "uncertainty_rate": 0.0,
+        "true_positive": 112,
+        "true_negative": 516,
+        "false_positive": 48,
+        "false_negative": 0,
+        "uncertain": 0
+      },
+      "max": {
+        "accuracy": 0.9289940828402367,
+        "f1_score": 0.9336814015547048,
+        "uncertainty_rate": 0.0,
+        "true_positive": 112,
+        "true_negative": 516,
+        "false_positive": 48,
+        "false_negative": 0,
+        "uncertain": 0
+      }
+    },
+    "cyclical": {
+      "raw": {
+        "accuracy": 0.9644970414201184,
+        "f1_score": 0.9629033055093522,
+        "uncertainty_rate": 0.8668639053254438,
+        "true_positive": 89,
+        "true_negative": 0,
+        "false_positive": 0,
+        "false_negative": 0,
+        "uncertain": 586
+      },
+      "min": {
+        "accuracy": 0.9644970414201184,
+        "f1_score": 0.9629033055093522,
+        "uncertainty_rate": 0.0,
+        "true_positive": 89,
+        "true_negative": 563,
+        "false_positive": 1,
+        "false_negative": 23,
+        "uncertain": 0
+      },
+      "max": {
+        "accuracy": 1.0,
+        "f1_score": 1.0,
+        "uncertainty_rate": 0.0,
+        "true_positive": 676,
+        "true_negative": 0,
+        "false_positive": 0,
+        "false_negative": 0,
+        "uncertain": 0
+      }
+    }
+  },
+  "0.3": {
+    "pessimistic": {
+      "raw": {
+        "accuracy": 0.772189349112426,
+        "f1_score": 0.7967371621987299,
+        "uncertainty_rate": 0.0,
+        "true_positive": 87,
+        "true_negative": 435,
+        "false_positive": 129,
+        "false_negative": 25,
+        "uncertain": 0
+      },
+      "min": {
+        "accuracy": 0.772189349112426,
+        "f1_score": 0.7967371621987299,
+        "uncertainty_rate": 0.0,
+        "true_positive": 87,
+        "true_negative": 435,
+        "false_positive": 129,
+        "false_negative": 25,
+        "uncertain": 0
+      },
+      "max": {
+        "accuracy": 0.772189349112426,
+        "f1_score": 0.7967371621987299,
+        "uncertainty_rate": 0.0,
+        "true_positive": 87,
+        "true_negative": 435,
+        "false_positive": 129,
+        "false_negative": 25,
+        "uncertain": 0
+      }
+    },
+    "kleene_strong": {
+      "raw": {
+        "accuracy": 0.22928994082840237,
+        "f1_score": 0.3719913745692642,
+        "uncertainty_rate": 0.7707100591715976,
+        "true_positive": 18,
+        "true_negative": 137,
+        "false_positive": 0,
+        "false_negative": 0,
+        "uncertain": 521
+      },
+      "min": {
+        "accuracy": 0.8609467455621301,
+        "f1_score": 0.8160218479745107,
+        "uncertainty_rate": 0.0,
+        "true_positive": 18,
+        "true_negative": 564,
+        "false_positive": 0,
+        "false_negative": 94,
+        "uncertain": 0
+      },
+      "max": {
+        "accuracy": 0.3683431952662722,
+        "f1_score": 0.3831189630207694,
+        "uncertainty_rate": 0.0,
+        "true_positive": 112,
+        "true_negative": 137,
+        "false_positive": 427,
+        "false_negative": 0,
+        "uncertain": 0
+      }
+    },
+    "quasi": {
+      "raw": {
+        "accuracy": 0.6568047337278107,
+        "f1_score": 0.6996772626833356,
+        "uncertainty_rate": 0.0,
+        "true_positive": 112,
+        "true_negative": 332,
+        "false_positive": 232,
+        "false_negative": 0,
+        "uncertain": 0
+      },
+      "min": {
+        "accuracy": 0.6568047337278107,
+        "f1_score": 0.6996772626833356,
+        "uncertainty_rate": 0.0,
+        "true_positive": 112,
+        "true_negative": 332,
+        "false_positive": 232,
+        "false_negative": 0,
+        "uncertain": 0
+      },
+      "max": {
+        "accuracy": 0.6568047337278107,
+        "f1_score": 0.6996772626833356,
+        "uncertainty_rate": 0.0,
+        "true_positive": 112,
+        "true_negative": 332,
+        "false_positive": 232,
+        "false_negative": 0,
+        "uncertain": 0
+      }
+    },
+    "cyclical": {
+      "raw": {
+        "accuracy": 0.9378698224852071,
+        "f1_score": 0.9353654291850958,
+        "uncertainty_rate": 0.863905325443787,
+        "true_positive": 81,
+        "true_negative": 0,
+        "false_positive": 0,
+        "false_negative": 0,
+        "uncertain": 584
+      },
+      "min": {
+        "accuracy": 0.9378698224852071,
+        "f1_score": 0.9353654291850958,
+        "uncertainty_rate": 0.0,
+        "true_positive": 81,
+        "true_negative": 553,
+        "false_positive": 11,
+        "false_negative": 31,
+        "uncertain": 0
+      },
+      "max": {
+        "accuracy": 1.0,
+        "f1_score": 1.0,
+        "uncertainty_rate": 0.0,
+        "true_positive": 676,
+        "true_negative": 0,
+        "false_positive": 0,
+        "false_negative": 0,
+        "uncertain": 0
+      }
+    }
+  },
+  "0.5": {
+    "pessimistic": {
+      "raw": {
+        "accuracy": 0.6997041420118343,
+        "f1_score": 0.7353822781788152,
+        "uncertainty_rate": 0.0,
+        "true_positive": 76,
+        "true_negative": 397,
+        "false_positive": 167,
+        "false_negative": 36,
+        "uncertain": 0
+      },
+      "min": {
+        "accuracy": 0.6997041420118343,
+        "f1_score": 0.7353822781788152,
+        "uncertainty_rate": 0.0,
+        "true_positive": 76,
+        "true_negative": 397,
+        "false_positive": 167,
+        "false_negative": 36,
+        "uncertain": 0
+      },
+      "max": {
+        "accuracy": 0.6997041420118343,
+        "f1_score": 0.7353822781788152,
+        "uncertainty_rate": 0.0,
+        "true_positive": 76,
+        "true_negative": 397,
+        "false_positive": 167,
+        "false_negative": 36,
+        "uncertain": 0
+      }
+    },
+    "kleene_strong": {
+      "raw": {
+        "accuracy": 0.04142011834319527,
+        "f1_score": 0.07953395600231523,
+        "uncertainty_rate": 0.9585798816568047,
+        "true_positive": 4,
+        "true_negative": 24,
+        "false_positive": 0,
+        "false_negative": 0,
+        "uncertain": 648
+      },
+      "min": {
+        "accuracy": 0.8402366863905325,
+        "f1_score": 0.7728440599600241,
+        "uncertainty_rate": 0.0,
+        "true_positive": 4,
+        "true_negative": 564,
+        "false_positive": 0,
+        "false_negative": 108,
+        "uncertain": 0
+      },
+      "max": {
+        "accuracy": 0.20118343195266272,
+        "f1_score": 0.11668419032782416,
+        "uncertainty_rate": 0.0,
+        "true_positive": 112,
+        "true_negative": 24,
+        "false_positive": 540,
+        "false_negative": 0,
+        "uncertain": 0
+      }
+    },
+    "quasi": {
+      "raw": {
+        "accuracy": 0.40532544378698226,
+        "f1_score": 0.4316259713833386,
+        "uncertainty_rate": 0.0,
+        "true_positive": 112,
+        "true_negative": 162,
+        "false_positive": 402,
+        "false_negative": 0,
+        "uncertain": 0
+      },
+      "min": {
+        "accuracy": 0.40532544378698226,
+        "f1_score": 0.4316259713833386,
+        "uncertainty_rate": 0.0,
+        "true_positive": 112,
+        "true_negative": 162,
+        "false_positive": 402,
+        "false_negative": 0,
+        "uncertain": 0
+      },
+      "max": {
+        "accuracy": 0.40532544378698226,
+        "f1_score": 0.4316259713833386,
+        "uncertainty_rate": 0.0,
+        "true_positive": 112,
+        "true_negative": 162,
+        "false_positive": 402,
+        "false_negative": 0,
+        "uncertain": 0
+      }
+    },
+    "cyclical": {
+      "raw": {
+        "accuracy": 0.8772189349112426,
+        "f1_score": 0.8708376607992103,
+        "uncertainty_rate": 0.871301775147929,
+        "true_positive": 58,
+        "true_negative": 0,
+        "false_positive": 0,
+        "false_negative": 0,
+        "uncertain": 589
+      },
+      "min": {
+        "accuracy": 0.8772189349112426,
+        "f1_score": 0.8708376607992103,
+        "uncertainty_rate": 0.0,
+        "true_positive": 58,
+        "true_negative": 535,
+        "false_positive": 29,
+        "false_negative": 54,
+        "uncertain": 0
+      },
+      "max": {
+        "accuracy": 1.0,
+        "f1_score": 1.0,
+        "uncertainty_rate": 0.0,
+        "true_positive": 676,
+        "true_negative": 0,
+        "false_positive": 0,
+        "false_negative": 0,
+        "uncertain": 0
+      }
+    }
+  }
+}

@@ -5,9 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81735eed-1024-46c2-a58f-05f316383b68" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/NormalAdder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TernaryExplorer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ternary_New_Adder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evaluation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pessimistic_adder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/preprocessing_min_max_avg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Adder.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Adder.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Convoultion_MNIST.py" beforeDir="false" afterPath="$PROJECT_DIR$/Convoultion_MNIST.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SK_Quasi_adder.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/SK_Quasi_adder.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convolution_results.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cyclical_adder.py" beforeDir="false" afterPath="$PROJECT_DIR$/cyclical_adder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/post_processing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing_majority.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing_majority.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing_unanimous.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing_unanimous.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,19 +42,36 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2ttSGgIHSUzRuOOGS0WJ2ndj9t5" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Python.2bit-Convolution.executor&quot;: &quot;Run&quot;,
+    &quot;Python.4bit-convolution.executor&quot;: &quot;Run&quot;,
     &quot;Python.Convoultion_MNIST.executor&quot;: &quot;Run&quot;,
+    &quot;Python.NormalAdder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.TernaryExplorer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Ternary_New_Adder.executor&quot;: &quot;Run&quot;,
     &quot;Python.cyclical adder.executor&quot;: &quot;Run&quot;,
     &quot;Python.cyclical_adder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.evaluation.executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pessimistic_adder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.post_processing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.preprocessing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.preprocessing2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.preprocessing_majority.executor&quot;: &quot;Run&quot;,
+    &quot;Python.strg-kln.executor&quot;: &quot;Run&quot;,
+    &quot;Python.strong_kleene.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test2.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Yassine ELMOUHI/Desktop/pycharm/Adder&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -51,11 +81,19 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Yassine ELMOUHI\Desktop\pycharm\Adder" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Yassine ELMOUHI\Desktop\pycharm\Adder\figures" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PY-242.22855.92" />
-        <option value="bundled-python-sdk-b068d85d1acf-399fe30bd8c1-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.22855.92" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-PY-251.25410.159" />
+        <option value="bundled-python-sdk-e0ed3721d81e-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.159" />
       </set>
     </attachedChunks>
   </component>
@@ -79,6 +117,25 @@
       <workItem from="1744628370328" duration="5309000" />
       <workItem from="1744730375153" duration="2853000" />
       <workItem from="1744746517956" duration="1174000" />
+      <workItem from="1744791410787" duration="4416000" />
+      <workItem from="1745325985030" duration="1809000" />
+      <workItem from="1745328679340" duration="8818000" />
+      <workItem from="1745394415264" duration="14173000" />
+      <workItem from="1745879556704" duration="51831000" />
+      <workItem from="1746367946438" duration="3555000" />
+      <workItem from="1746452064877" duration="13052000" />
+      <workItem from="1746969386326" duration="36401000" />
+      <workItem from="1747083766761" duration="12889000" />
+      <workItem from="1747152724749" duration="3826000" />
+      <workItem from="1747170174316" duration="8923000" />
+      <workItem from="1747584063483" duration="10205000" />
+      <workItem from="1747647640801" duration="6654000" />
+      <workItem from="1748433062379" duration="29063000" />
+      <workItem from="1748820378996" duration="628000" />
+      <workItem from="1748988905512" duration="3209000" />
+      <workItem from="1748993743878" duration="8719000" />
+      <workItem from="1749075504077" duration="10542000" />
+      <workItem from="1749480086995" duration="359000" />
     </task>
     <servers />
   </component>
@@ -86,8 +143,23 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Adder$Convoultion_MNIST.coverage" NAME="Convoultion_MNIST Coverage Results" MODIFIED="1744736512941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Adder$preprocessing_majority.coverage" NAME="preprocessing_majority Coverage Results" MODIFIED="1747601190420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Adder$4bit_convolution.coverage" NAME="4bit-convolution Coverage Results" MODIFIED="1746401068795" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Adder$preprocessing.coverage" NAME="preprocessing Coverage Results" MODIFIED="1747063853836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Adder$cyclical_adder.coverage" NAME="cyclical_adder Coverage Results" MODIFIED="1748500256391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Adder$2bit_Convolution.coverage" NAME="2bit-Convolution Coverage Results" MODIFIED="1745978798992" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Adder$Ternary_New_Adder.coverage" NAME="Ternary_New_Adder Coverage Results" MODIFIED="1749080345613" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Adder$Convoultion_MNIST.coverage" NAME="Convoultion_MNIST Coverage Results" MODIFIED="1748500453756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Adder$TernaryExplorer.coverage" NAME="TernaryExplorer Coverage Results" MODIFIED="1749078821067" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Adder$post_processing.coverage" NAME="post_processing Coverage Results" MODIFIED="1747078688702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Adder$strong_kleene.coverage" NAME="strong_kleene Coverage Results" MODIFIED="1745995396859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Adder$main.coverage" NAME="main Coverage Results" MODIFIED="1743181936440" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Adder$cyclical_adder.coverage" NAME="cyclical_adder Coverage Results" MODIFIED="1744746964522" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Adder$NormalAdder.coverage" NAME="NormalAdder Coverage Results" MODIFIED="1748991190227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Adder$evaluation.coverage" NAME="evaluation Coverage Results" MODIFIED="1749083502841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Adder$test.coverage" NAME="test Coverage Results" MODIFIED="1746977493885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Adder$test2.coverage" NAME="test2 Coverage Results" MODIFIED="1746992763623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Adder$preprocessing2.coverage" NAME="preprocessing2 Coverage Results" MODIFIED="1747055518268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Adder$strg_kln.coverage" NAME="strg-kln Coverage Results" MODIFIED="1745880525046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Adder$pessimistic_adder.coverage" NAME="pessimistic_adder Coverage Results" MODIFIED="1748436895301" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -1,13 +1,24 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import fetch_openml
+from preprocessing_unanimous import unanimous_impute
+
+# ── Step 1: Load MNIST once ──────────────────────────────────────────────
+mnist = fetch_openml('mnist_784', version=1, as_frame=False, parser='auto')
+ALL_IMAGES = mnist.data.reshape(-1, 28, 28)    # shape = (70000, 28, 28)
+ALL_LABELS = mnist.target.astype(int)          # shape = (70000,)
+
+INDICES_BY_DIGIT = {d: np.where(ALL_LABELS == d)[0] for d in range(10)}
 
 
-def select_image(digit=2):
-    mnist = fetch_openml('mnist_784', version=1, as_frame=False, parser='auto')
-    imgs = mnist.data.reshape(-1,28,28)
-    labs = mnist.target.astype(int)
-    return imgs[labs == digit][0]
+def select_image(digit=2, seed=None):
+    if seed is not None:
+        np.random.seed(seed)
+
+    idx_list = INDICES_BY_DIGIT[digit]
+    pick = np.random.choice(idx_list)
+    return ALL_IMAGES[pick]
+
 
 def binarize(image, thresh=128):
     return (image > thresh).astype(int)
@@ -93,28 +104,71 @@ def visualize_imputation(orig, noisy, imputed):
     plt.subplots_adjust(top=0.95, wspace=0.3)  # Add more top space
     plt.show()
 
+def evaluate_imputation(n_runs=20, p=0.3, kernel_size=3, seed=None):
+    accuracies = []
+    digits = np.arange(10)
+
+    if seed is not None:
+        np.random.seed(seed)
+
+    for _ in range(n_runs):
+        digit = np.random.choice(digits)
+        img = select_image(digit)
+        bin_img = binarize(img)
+        ter = ternarize(bin_img)
+
+        noisy, mask = add_noise(ter, p=p)
+        imputed = unanimous_impute(noisy, kernel_size=kernel_size)
+
+        flipped_positions = np.where(mask)
+        n_flipped = mask.sum()
+        if n_flipped == 0:
+            continue  # skip if no noise was added (edge case)
+
+        correct = sum(imputed[i, j] == ter[i, j] for i, j in zip(*flipped_positions))
+        accuracy = correct / n_flipped
+        accuracies.append(accuracy)
+
+    if not accuracies:
+        return 0.0, 0
+
+    average_accuracy = np.mean(accuracies)
+    return average_accuracy, len(accuracies)
+
+
 
 # === Run and visualize ===
-if __name__ == "__main__":
-    digit = 7
-    img = select_image(digit)
-    bin_img = binarize(img)
-    ter = ternarize(bin_img)
-    noisy, mask = add_stripe_noise(ter,stripe_width=3)
-    imputed = majority_impute(noisy, kernel_size=3)
-    visualize_imputation(ter, noisy, imputed)
-    flipped_positions = np.where(mask)
-    n_flipped = mask.sum()
-    # Count how many unknowns were imputed (i.e., changed from 0)
-    imputed_mask = (noisy == 0) & (imputed != 0)
-    n_imputed = imputed_mask.sum()
-    correct = 0
-    for i, j in zip(*flipped_positions):
-        if imputed[i, j] == ter[i, j]:
-            correct += 1
-    p = 0.7
-    accuracy = correct / n_flipped if n_flipped > 0 else 0.0
-    # print(f"Noise fraction p={p:.2f}, flipped pixels = {n_flipped}")
-    print(f"flipped pixels = {n_flipped}")
-    print(f"Total imputed pixels: {n_imputed}")
-    print(f"Imputation accuracy = {accuracy * 100:.1f}%")
+if __name__ == "__main__" :
+    avg_acc, runs = evaluate_imputation(n_runs=1000, p=0.5, kernel_size=3, seed=42)
+    print(f"Average Imputation Accuracy over {runs} runs: {avg_acc * 100:.2f}%")
+
+
+
+
+
+
+
+
+
+    # digit = 7
+    # img = select_image(digit)
+    # bin_img = binarize(img)
+    # ter = ternarize(bin_img)
+    # noisy, mask = add_stripe_noise(ter,stripe_width=3)
+    # imputed = majority_impute(noisy, kernel_size=3)
+    # visualize_imputation(ter, noisy, imputed)
+    # flipped_positions = np.where(mask)
+    # n_flipped = mask.sum()
+    # # Count how many unknowns were imputed (i.e., changed from 0)
+    # imputed_mask = (noisy == 0) & (imputed != 0)
+    # n_imputed = imputed_mask.sum()
+    # correct = 0
+    # for i, j in zip(*flipped_positions):
+    #     if imputed[i, j] == ter[i, j]:
+    #         correct += 1
+    # p = 0.7
+    # accuracy = correct / n_flipped if n_flipped > 0 else 0.0
+    # # print(f"Noise fraction p={p:.2f}, flipped pixels = {n_flipped}")
+    # print(f"flipped pixels = {n_flipped}")
+    # print(f"Total imputed pixels: {n_imputed}")
+    # print(f"Imputation accuracy = {accuracy * 100:.1f}%")

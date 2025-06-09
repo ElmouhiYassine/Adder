@@ -98,21 +98,21 @@ def visualize_and_evaluate(p=0.1, kernel_size=3):
     n_imputed = imputed_mask.sum()
 
     # Visualization
-    fig, axes = plt.subplots(1, 3, figsize=(15, 5))  # Make figure wider and taller
-    imgs = [ter, noisy, imputed]
-    titles = ["Original Ternary", "Noisy Ternary", "Imputed Ternary"]
-
-    for ax, img, title in zip(axes, imgs, titles):
-        ax.imshow(img, cmap='hot', vmin=-1, vmax=1)
-        ax.set_title(title, fontsize=14)
-        ax.axis('off')
-
-    plt.subplots_adjust(top=0.95, wspace=0.3)  # Add more top space
-    plt.show()
-
-    print(f"Flipped pixels: {n_flipped}")
-    print(f"imputed pixels: {n_imputed}")
-    print(f"Unanimous Imputation accuracy: {accuracy * 100:.1f}%")
+    # fig, axes = plt.subplots(1, 3, figsize=(15, 5))  # Make figure wider and taller
+    # imgs = [ter, noisy, imputed]
+    # titles = ["Original Ternary", "Noisy Ternary", "Imputed Ternary"]
+    #
+    # for ax, img, title in zip(axes, imgs, titles):
+    #     ax.imshow(img, cmap='hot', vmin=-1, vmax=1)
+    #     ax.set_title(title, fontsize=14)
+    #     ax.axis('off')
+    #
+    # plt.subplots_adjust(top=0.95, wspace=0.3)  # Add more top space
+    # plt.show()
+    #
+    # print(f"Flipped pixels: {n_flipped}")
+    # print(f"imputed pixels: {n_imputed}")
+    # print(f"Unanimous Imputation accuracy: {accuracy * 100:.1f}%")
 
 
 # Run

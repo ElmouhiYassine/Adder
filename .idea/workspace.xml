@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81735eed-1024-46c2-a58f-05f316383b68" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/NormalAdder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TernaryExplorer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ternary_New_Adder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evaluation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pessimistic_adder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/preprocessing_min_max_avg.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Adder.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Adder.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Convoultion_MNIST.py" beforeDir="false" afterPath="$PROJECT_DIR$/Convoultion_MNIST.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SK_Quasi_adder.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/SK_Quasi_adder.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/convolution_results.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyclical_adder.py" beforeDir="false" afterPath="$PROJECT_DIR$/cyclical_adder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/post_processing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocessing_majority.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing_majority.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocessing_unanimous.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing_unanimous.py" afterDir="false" />
-    </list>
+    <list default="true" id="81735eed-1024-46c2-a58f-05f316383b68" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +21,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ElmouhiYassine/Adder.git",
+    "accountId": "49697b55-3bd0-4ad3-92bb-a09af9fc42fd"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -46,41 +35,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.2bit-Convolution.executor&quot;: &quot;Run&quot;,
-    &quot;Python.4bit-convolution.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Convoultion_MNIST.executor&quot;: &quot;Run&quot;,
-    &quot;Python.NormalAdder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.TernaryExplorer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Ternary_New_Adder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.cyclical adder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.cyclical_adder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.evaluation.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pessimistic_adder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.post_processing.executor&quot;: &quot;Run&quot;,
-    &quot;Python.preprocessing.executor&quot;: &quot;Run&quot;,
-    &quot;Python.preprocessing2.executor&quot;: &quot;Run&quot;,
-    &quot;Python.preprocessing_majority.executor&quot;: &quot;Run&quot;,
-    &quot;Python.strg-kln.executor&quot;: &quot;Run&quot;,
-    &quot;Python.strong_kleene.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test2.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Yassine ELMOUHI/Desktop/pycharm/Adder&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.2bit-Convolution.executor": "Run",
+    "Python.4bit-convolution.executor": "Run",
+    "Python.Convoultion_MNIST.executor": "Run",
+    "Python.NormalAdder.executor": "Run",
+    "Python.TernaryExplorer.executor": "Run",
+    "Python.Ternary_New_Adder.executor": "Run",
+    "Python.cyclical adder.executor": "Run",
+    "Python.cyclical_adder.executor": "Run",
+    "Python.evaluation.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.pessimistic_adder.executor": "Run",
+    "Python.post_processing.executor": "Run",
+    "Python.preprocessing.executor": "Run",
+    "Python.preprocessing2.executor": "Run",
+    "Python.preprocessing_majority.executor": "Run",
+    "Python.strg-kln.executor": "Run",
+    "Python.strong_kleene.executor": "Run",
+    "Python.test.executor": "Run",
+    "Python.test2.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Merging main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Yassine ELMOUHI/Desktop/pycharm/Adder",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Yassine ELMOUHI\Desktop\pycharm\Adder" />

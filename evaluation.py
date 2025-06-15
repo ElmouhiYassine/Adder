@@ -6,7 +6,7 @@ from sklearn.metrics import f1_score
 import json
 
 # Import adders
-from pessimistic_adder import pessimistic_full_adder
+from pesi_op_adder import full_op_adder
 from strong_kleene import strong_kleene_full_adder
 from SK_Quasi_adder import map_quasi_adder
 from cyclical_adder import cyclical_full_adder
@@ -30,12 +30,11 @@ Min_values,
 
 # all adders to evaluate
 ADDER_FUNCTIONS = {
-    "pessimistic": pessimistic_full_adder,
+    "pessimistic-opti": full_op_adder,
     "kleene_strong": strong_kleene_full_adder,
-    "quasi": map_quasi_adder,
-     "cyclical": cyclical_full_adder
+    "quasi": map_quasi_adder
 }
-for i in range(27):
+for i in range(6):
     ADDER_FUNCTIONS[f'adder_{i}'] = get_Adder(i)
 
 

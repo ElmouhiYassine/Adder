@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from collections import Counter
 from sklearn.datasets import fetch_openml
 from cyclical_adder import cyclical_full_adder
+from pesi_op_adder import full_op_adder
 from strong_kleene import strong_kleene_full_adder
 import matplotlib.colors as mcolors
 from preprocessing_majority import majority_impute, add_block_noise
@@ -12,7 +13,10 @@ from SK_Quasi_adder import map_quasi_adder
 from post_processing import interval_range_classification, min_assumption, max_assumption
 from pessimistic_adder import pessimistic_full_adder
 from NormalAdder import Normal_adder
-
+from Ternary_New_Adder import (
+get_Adder
+)
+adder_0 = get_Adder(0)
 ternary_cmap = mcolors.ListedColormap(['black', (1.0, 0.4, 0.0), 'white'])
 bounds = [-1.5, -0.5, 0.5, 1.5]
 norm = mcolors.BoundaryNorm(bounds, ternary_cmap.N)
@@ -77,7 +81,7 @@ def convolve_ternary(image, kernel, adder):
 
 
 
-def add_noise(ter, p=0.1):
+def add_noise(ter, p=0.2):
     noisy = ter.copy()
     h, w = noisy.shape
     num_flips = int(p * h * w)
@@ -140,15 +144,15 @@ if __name__ == "__main__":
         np.ones((3, 3), dtype=int),
         np.array([[-1, 0, 1], [-1, 0, 1], [-1, 0, 1]])
     ]
-    digit = 3
+    digit = 9
     image = select_image(digit)
     binarized_image = binarize_image(image)
     tern = ternarize(binarized_image)
-    noisy_example = add_noise(tern, p=0.3)
+    noisy_example = add_noise(tern, p=0.2)
     imputed_image = majority_impute(noisy_example)
-    out  = convolve_ternary(noisy_example, kernels[0], cyclical_full_adder)
+    out  = convolve_ternary(noisy_example, kernels[0], adder_0)
 
-    visualize_results(tern,noisy_example,imputed_image,kernels[0],ternary_cmap,norm , cyclical_full_adder)
+    visualize_results(tern,noisy_example,imputed_image,kernels[0],ternary_cmap,norm , adder_0)
 
     has_unknown = np.any(out == 0, axis=-1)
     # count how many output pixels have at least one unknown

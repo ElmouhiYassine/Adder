@@ -5,7 +5,7 @@ def str_to_tuple(key):
     return tuple(map(int, key.split(',')))
 
 def load_gates():
-    with open('ternary_gates.json', 'r') as f:
+    with open('ternary_gates_constrained.json', 'r') as f:
         gates = json.load(f)
     # Convert string keys to tuples for all gate pairs
     for gate_pair in gates:

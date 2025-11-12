@@ -1,19 +1,10 @@
-import numpy as np
-import import_ipynb
-import matplotlib.pyplot as plt
-from collections import Counter
 from sklearn.datasets import fetch_openml
-from cyclical_adder import cyclical_full_adder
-from pesi_op_adder import full_op_adder
-from strong_kleene import strong_kleene_full_adder
+from Adders.pesi_op_adder import full_op_adder
 import matplotlib.colors as mcolors
-from preprocessing_majority import majority_impute, add_block_noise
-from preprocessing_unanimous import unanimous_impute
-from SK_Quasi_adder import map_quasi_adder
-from post_processing import interval_range_classification, min_assumption, max_assumption
-from pessimistic_adder import pessimistic_full_adder
-from NormalAdder import Normal_adder
-from Ternary_New_Adder import (
+from preprocessing_majority import majority_impute
+from post_processing import interval_range_classification
+from Adders.NormalAdder import Normal_adder
+from Adders.Ternary_New_Adder import (
 get_Adder
 )
 adder_0 = get_Adder(0)
@@ -48,7 +39,7 @@ def add_value_to_sum(sum_trits, v, adder):
         a = sum_trits[i]
         b = v if i == 0 else -1  # Add v only to the least significant trit
         cin = carry
-        # here the adder @@@@@2
+        # here is the adder @@@@@2
         sum_trits[i], carry = adder(a, b, cin)
     return sum_trits
 
@@ -137,6 +128,24 @@ def visualize_results(ter_original, noisy_example, imputed, kernel, ternary_cmap
     plt.subplots_adjust(top=0.95, bottom=0.05, hspace=0.3, wspace=0.2)
     plt.show()
 
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+def afficher_image(image, cmap=None):
+    if cmap is None:
+        if len(image.shape) == 2:
+            cmap = 'gray'
+        elif image.shape[2] == 1:
+            cmap = 'gray'
+            image = image.squeeze()
+        else:
+            cmap = None
+
+    plt.imshow(image, cmap=cmap)
+    plt.axis('off')  # Désactiver les axes
+    plt.show()
 # Main code
 if __name__ == "__main__":
     kernels = [
@@ -144,19 +153,28 @@ if __name__ == "__main__":
         np.ones((3, 3), dtype=int),
         np.array([[-1, 0, 1], [-1, 0, 1], [-1, 0, 1]])
     ]
-    digit = 9
+    digit = 4
     image = select_image(digit)
     binarized_image = binarize_image(image)
     tern = ternarize(binarized_image)
     noisy_example = add_noise(tern, p=0.2)
+    normal_conv = convolve_ternary(tern,kernels[2],Normal_adder)
+    mapped_out1 = interval_range_classification(normal_conv)
+    conv_uncertain = convolve_ternary(noisy_example,kernels[2],full_op_adder)
+    mapped_out2 = interval_range_classification(conv_uncertain)
     imputed_image = majority_impute(noisy_example)
-    out  = convolve_ternary(noisy_example, kernels[0], adder_0)
+    # out  = convolve_ternary(noisy_example, kernels[0], adder_0)
 
-    visualize_results(tern,noisy_example,imputed_image,kernels[0],ternary_cmap,norm , adder_0)
+    # visualize_results(tern,noisy_example,imputed_image,kernels[0],ternary_cmap,norm , adder_0)
+    #
+    # has_unknown = np.any(out == 0, axis=-1)
+    # # count how many output pixels have at least one unknown
+    # n_unknown = np.count_nonzero(has_unknown)
+    # total = has_unknown.size
+    #
+    # print(f"{n_unknown} out of {total} output vectors contain at least one 0 (unknown).")
 
-    has_unknown = np.any(out == 0, axis=-1)
-    # count how many output pixels have at least one unknown
-    n_unknown = np.count_nonzero(has_unknown)
-    total = has_unknown.size
-
-    print(f"{n_unknown} out of {total} output vectors contain at least one 0 (unknown).")
+    afficher_image(tern,cmap = ternary_cmap)
+    afficher_image(noisy_example,cmap=ternary_cmap)
+    afficher_image(mapped_out1,cmap=ternary_cmap)
+    afficher_image(mapped_out2,cmap=ternary_cmap)

@@ -2,9 +2,18 @@ import itertools
 import numpy as np
 
 # Import only the three adder implementations we care about:
-from pesi_op_adder import full_op_adder
-from SK_Quasi_adder import map_quasi_adder
-from strong_kleene import strong_kleene_full_adder
+from Adders.pesi_op_adder import full_op_adder
+from Adders.SK_Quasi_adder import map_quasi_adder
+from Adders.strong_kleene import strong_kleene_full_adder
+
+from Adders.Ternary_New_Adder import (
+    get_Adder
+)
+
+adder1 = get_Adder(0)
+adder_collab= get_Adder(2)
+adder_tr = get_Adder(4)
+adder_2_tr = get_Adder(5)
 
 def adder_sum_trits(adder_func, A: list[int], B: list[int]) -> list[int]:
 
@@ -54,55 +63,91 @@ def max_value(adder_func, A: list[int], B: list[int]) -> int:
 adders = {
     "Strong-Kleene": strong_kleene_full_adder,
     "Pessimistic-Op": full_op_adder,
-    "Quasi": map_quasi_adder
+    "Quasi": map_quasi_adder,
+    "Super Pessi-Op" : adder1,
+    "Collapsible" : adder_collab,
+    "Triangular" : adder_tr,
+    "Bi-Triangular" : adder_2_tr,
 }
 
-# Enumerate all 4-trit vectors in {-1,0,+1}^4:
-vectors = list(itertools.product([-1, 0, +1], repeat=4))
+# vectors = [v for v in itertools.product([ -1,0], repeat=8) if is_mu_vector(v)]
+vectors = list(itertools.product([-1, 0], repeat=8))
 
-# Prepare a stats table for each adder
+# Prepare a stats table for each adder with lists for variance calculation
+# Prepare a stats table for each adder with lists for variance calculation
 stats = {}
 for name in adders:
     stats[name] = {
-        "sum_min_deviation": 0.0,   # sum of (|adder_min - true_min|)
-        "sum_max_deviation": 0.0,   # sum of (|adder_max - true_max|)
-        "sum_mid_deviation": 0.0,   # sum of (|adder_mid - true_mid|)
-        "total_pairs": 0
+        "min_dev": [],
+        "max_dev": [],
+        "mid_dev": [],
+        "min_pct": [],
+        "max_pct": [],
+        "mid_pct": [],
     }
 
 count = 0
 
-# Loop over all pairs (A, B) in {-1,0,+1}^4 × {-1,0,+1}^4:
-for A in vectors:
-    for B in vectors:
-        count += 1
-        # Compute true‐operand bounds:
-        A_min, A_max = trits_to_decimal_bounds(A)
-        B_min, B_max = trits_to_decimal_bounds(B)
-        true_min = A_min + B_min
-        true_max = A_max + B_max
-        true_mid = 0.5 * (true_min + true_max)
+for A, B in itertools.combinations_with_replacement(vectors, 2):
+    A = list(A); B = list(B)
+    count += 1
+    # True bounds
+    A_min, A_max = trits_to_decimal_bounds(A)
+    B_min, B_max = trits_to_decimal_bounds(B)
+    true_min = A_min + B_min
+    true_max = A_max + B_max
+    true_mid = 0.5 * (true_min + true_max)
 
-        for name, func in adders.items():
-            adder_min = min_value(func, list(A), list(B))
-            adder_max = max_value(func, list(A), list(B))
-            adder_mid = 0.5 * (adder_min + adder_max)
+    for name, func in adders.items():
+        adder_min = min_value(func, list(A), list(B))
+        adder_max = max_value(func, list(A), list(B))
+        adder_mid = 0.5 * (adder_min + adder_max)
 
-            data = stats[name]
-            data["total_pairs"] += 1
-            data["sum_min_deviation"] += abs(adder_min - true_min)
-            data["sum_max_deviation"] += abs(adder_max - true_max)
-            data["sum_mid_deviation"] += abs(adder_mid - true_mid)
+        # Absolute deviations
+        stats[name]["min_dev"].append(abs(adder_min - true_min))
+        stats[name]["max_dev"].append(abs(adder_max - true_max))
+        stats[name]["mid_dev"].append(abs(adder_mid - true_mid))
 
-# Print out averaged metrics for each adder
+        # Relative errors in percentage
+        if true_min == 0:
+            if adder_min == 0:
+                stats[name]["min_pct"].append(0.0)
+            else:
+                # If truth is 0 but adder is not, treat error as full magnitude ratio to 1 (or set rule)
+                stats[name]["min_pct"].append(100.0)
+        else:
+            stats[name]["min_pct"].append(100 * abs(adder_min - true_min) / abs(true_min))
+
+        if true_max == 0:
+            if adder_max == 0:
+                stats[name]["max_pct"].append(0.0)
+            else:
+                stats[name]["max_pct"].append(100.0)
+        else:
+            stats[name]["max_pct"].append(100 * abs(adder_max - true_max) / abs(true_max))
+
+        if true_mid == 0:
+            if adder_mid == 0:
+                stats[name]["mid_pct"].append(0.0)
+            else:
+                stats[name]["mid_pct"].append(100.0)
+        else:
+            stats[name]["mid_pct"].append(100 * abs(adder_mid - true_mid) / abs(true_mid))
+
+print(count)
+
+# Print results
 for name, data in stats.items():
-    n = data["total_pairs"]
-    avg_min_dev = data["sum_min_deviation"] / n
-    avg_max_dev = data["sum_max_deviation"] / n
-    avg_mid_dev = data["sum_mid_deviation"] / n
+    min_dev = np.array(data["min_dev"])
+    max_dev = np.array(data["max_dev"])
+    mid_dev = np.array(data["mid_dev"])
+
+    min_pct = np.array(data["min_pct"])
+    max_pct = np.array(data["max_pct"])
+    mid_pct = np.array(data["mid_pct"])
 
     print(f"Adder: {name}")
-    print(f"  Avg |adder_min - true_min| = {avg_min_dev:.4f}")
-    print(f"  Avg |adder_max - true_max| = {avg_max_dev:.4f}")
-    print(f"  Avg |adder_mid - true_mid| = {avg_mid_dev:.4f}")
+    print(f"  Avg abs(min error) = {min_dev.mean():.4f}   Var = {min_dev.var():.4f}   Avg % err = {min_pct.mean():.2f}%")
+    print(f"  Avg abs(max error) = {max_dev.mean():.4f}   Var = {max_dev.var():.4f}   Avg % err = {max_pct.mean():.2f}%")
+    print(f"  Avg abs(mid error) = {mid_dev.mean():.4f}   Var = {mid_dev.var():.4f}   Avg % err = {mid_pct.mean():.2f}%")
     print()

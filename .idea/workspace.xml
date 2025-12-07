@@ -5,82 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81735eed-1024-46c2-a58f-05f316383b68" name="Changes" comment="set commit - no changes">
-      <change afterPath="$PROJECT_DIR$/Adders/gaines_rescher_adder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Adders/sette_adder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HTLConvolution/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HTLConvolution/dataset_loader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HTLConvolution/helpers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HTLConvolution/htl_convolution.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ternary-arithmetic/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/to be deleted/Test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/to be deleted/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Adder.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Adder.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adders/Balanced_Ternary_Adder.py" beforeDir="false" afterPath="$PROJECT_DIR$/Adders/balanced_ternary_adder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adders/NormalAdder.py" beforeDir="false" afterPath="$PROJECT_DIR$/Adders/normal_adder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adders/SK_Quasi_adder.py" beforeDir="false" afterPath="$PROJECT_DIR$/Adders/sobocinski_adder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adders/circuit_code.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adders/cyclical_adder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adders/lukasiewicz_adder.py" beforeDir="false" afterPath="$PROJECT_DIR$/Adders/lukasiewicz_adder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Adders/strong_kleene.py" beforeDir="false" afterPath="$PROJECT_DIR$/Adders/strong_kleene_adder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Branching_After_Convolution_Two_Paths.png" beforeDir="false" afterPath="$PROJECT_DIR$/to be deleted/Branching_After_Convolution_Two_Paths.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNN Architecture/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Adders/bochvar_external_adder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNN Architecture/convolution_U_V.py" beforeDir="false" afterPath="$PROJECT_DIR$/to be deleted/convolution_U_V.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNN Architecture/data/FashionMNIST/raw/t10k-images-idx3-ubyte" beforeDir="false" afterPath="$PROJECT_DIR$/HTLConvolution/data/FashionMNIST/raw/t10k-images-idx3-ubyte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNN Architecture/data/FashionMNIST/raw/t10k-images-idx3-ubyte.gz" beforeDir="false" afterPath="$PROJECT_DIR$/HTLConvolution/data/FashionMNIST/raw/t10k-images-idx3-ubyte.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNN Architecture/data/FashionMNIST/raw/t10k-labels-idx1-ubyte" beforeDir="false" afterPath="$PROJECT_DIR$/HTLConvolution/data/FashionMNIST/raw/t10k-labels-idx1-ubyte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNN Architecture/data/FashionMNIST/raw/t10k-labels-idx1-ubyte.gz" beforeDir="false" afterPath="$PROJECT_DIR$/HTLConvolution/data/FashionMNIST/raw/t10k-labels-idx1-ubyte.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNN Architecture/data/FashionMNIST/raw/train-images-idx3-ubyte" beforeDir="false" afterPath="$PROJECT_DIR$/HTLConvolution/data/FashionMNIST/raw/train-images-idx3-ubyte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNN Architecture/data/FashionMNIST/raw/train-images-idx3-ubyte.gz" beforeDir="false" afterPath="$PROJECT_DIR$/HTLConvolution/data/FashionMNIST/raw/train-images-idx3-ubyte.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNN Architecture/data/FashionMNIST/raw/train-labels-idx1-ubyte" beforeDir="false" afterPath="$PROJECT_DIR$/HTLConvolution/data/FashionMNIST/raw/train-labels-idx1-ubyte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNN Architecture/data/FashionMNIST/raw/train-labels-idx1-ubyte.gz" beforeDir="false" afterPath="$PROJECT_DIR$/HTLConvolution/data/FashionMNIST/raw/train-labels-idx1-ubyte.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNN Architecture/data/MNIST/raw/t10k-images-idx3-ubyte" beforeDir="false" afterPath="$PROJECT_DIR$/HTLConvolution/data/MNIST/raw/t10k-images-idx3-ubyte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNN Architecture/data/MNIST/raw/t10k-images-idx3-ubyte.gz" beforeDir="false" afterPath="$PROJECT_DIR$/HTLConvolution/data/MNIST/raw/t10k-images-idx3-ubyte.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNN Architecture/data/MNIST/raw/t10k-labels-idx1-ubyte" beforeDir="false" afterPath="$PROJECT_DIR$/HTLConvolution/data/MNIST/raw/t10k-labels-idx1-ubyte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNN Architecture/data/MNIST/raw/t10k-labels-idx1-ubyte.gz" beforeDir="false" afterPath="$PROJECT_DIR$/HTLConvolution/data/MNIST/raw/t10k-labels-idx1-ubyte.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNN Architecture/data/MNIST/raw/train-images-idx3-ubyte" beforeDir="false" afterPath="$PROJECT_DIR$/HTLConvolution/data/MNIST/raw/train-images-idx3-ubyte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNN Architecture/data/MNIST/raw/train-images-idx3-ubyte.gz" beforeDir="false" afterPath="$PROJECT_DIR$/HTLConvolution/data/MNIST/raw/train-images-idx3-ubyte.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNN Architecture/data/MNIST/raw/train-labels-idx1-ubyte" beforeDir="false" afterPath="$PROJECT_DIR$/HTLConvolution/data/MNIST/raw/train-labels-idx1-ubyte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNN Architecture/data/MNIST/raw/train-labels-idx1-ubyte.gz" beforeDir="false" afterPath="$PROJECT_DIR$/HTLConvolution/data/MNIST/raw/train-labels-idx1-ubyte.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNN Architecture/test_split.py" beforeDir="false" afterPath="$PROJECT_DIR$/to be deleted/test_split.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conjecture_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/to be deleted/Conjecture_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Convoultion_MNIST.py" beforeDir="false" afterPath="$PROJECT_DIR$/to be deleted/Convoultion_MNIST.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experimental_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/to be deleted/Experimental_v2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Image_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/to be deleted/Image_processing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test_computation.py" beforeDir="false" afterPath="$PROJECT_DIR$/to be deleted/Test_computation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Training.py" beforeDir="false" afterPath="$PROJECT_DIR$/to be deleted/Training.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/U_V_Pass_Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/to be deleted/U_V_Pass_Test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adder_approx_v3.py" beforeDir="false" afterPath="$PROJECT_DIR$/ternary-arithmetic/adder_approx_v3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adder_approximations.py" beforeDir="false" afterPath="$PROJECT_DIR$/ternary-arithmetic/adder_approximations.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adder_approximations_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/ternary-arithmetic/adder_approximations_v2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adder_comparison.png" beforeDir="false" afterPath="$PROJECT_DIR$/ternary-arithmetic/adder_comparison.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coeff_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/to be deleted/coeff_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/to be deleted/evaluation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/conv2bit_kernel_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/conv2bit_kernel_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/conv2bit_kernel_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/convolution_results.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/convolution_results_kernel_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/convolution_results_kernel_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/convolution_results_kernel_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/convolution_results_strong_kleene.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/convolution_results_strong_kleene_kernel_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/convolution_results_strong_kleene_kernel_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/convolution_results_strong_kleene_kernel_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/lsb_kernel_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/lsb_kernel_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/lsb_kernel_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/msb_kernel_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/msb_kernel_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/msb_kernel_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plot variance.py" beforeDir="false" afterPath="$PROJECT_DIR$/ternary-arithmetic/plot variance.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/to be deleted/post_processing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocessing_majority.py" beforeDir="false" afterPath="$PROJECT_DIR$/to be deleted/preprocessing_majority.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocessing_min_max_avg.py" beforeDir="false" afterPath="$PROJECT_DIR$/to be deleted/preprocessing_min_max_avg.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocessing_unanimous.py" beforeDir="false" afterPath="$PROJECT_DIR$/to be deleted/preprocessing_unanimous.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HTLConvolution/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/HTLConvolution/helpers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ternary-arithmetic/adder_approx_v3.py" beforeDir="false" afterPath="$PROJECT_DIR$/ternary-arithmetic/adder_approx_v3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ternary-arithmetic/adder_approximations_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/ternary-arithmetic/adder_approximations_v2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,7 +187,7 @@
       <workItem from="1763047535550" duration="28344000" />
       <workItem from="1763475025823" duration="18797000" />
       <workItem from="1764835038368" duration="5059000" />
-      <workItem from="1764840286349" duration="20684000" />
+      <workItem from="1764840286349" duration="25172000" />
     </task>
     <task id="LOCAL-00001" summary="set commit - no changes">
       <option name="closed" value="true" />

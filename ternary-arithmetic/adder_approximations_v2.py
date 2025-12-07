@@ -5,7 +5,7 @@ import random
 
 # ---- your adders (replace imports if needed) ----
 from Adders.pesi_op_adder import full_op_adder
-from Adders.SK_Quasi_adder import map_quasi_adder
+from Adders.sobocinski_adder import map_quasi_adder
 from Adders.strong_kleene_adder import strong_kleene_full_adder
 from Adders.Ternary_New_Adder import get_Adder
 
@@ -16,12 +16,12 @@ adder_2_tr = get_Adder(5)
 
 adders = {
     "Strong-Kleene": strong_kleene_full_adder,
-    "Pessimistic-Op": full_op_adder,
-    "Quasi": map_quasi_adder,
-    "Super Pessi-Op": adder1,
-    "Collapsible": adder_collab,
-    "Triangular": adder_tr,
-    "Bi-Triangular": adder_2_tr,
+    "Pessimistic-Optimistic": full_op_adder,
+    "Sobocinski": map_quasi_adder,
+    "Bochvar external": adder1,
+    "Sette": adder_collab,
+    "Lukasiewicz": adder_tr,
+    "Gaines-Rescher": adder_2_tr,
 }
 # -------------------------------------------------
 

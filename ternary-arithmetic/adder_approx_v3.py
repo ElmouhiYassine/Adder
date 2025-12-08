@@ -1,8 +1,9 @@
 import itertools
 import json
 import numpy as np
+import matplotlib.pyplot as plt
 
-# ---- your adders (replace imports if needed) ----
+# ---- your adders ----
 from Adders.pesi_op_adder import full_op_adder
 from Adders.sobocinski_adder import map_quasi_adder
 from Adders.strong_kleene_adder import strong_kleene_full_adder
@@ -21,52 +22,43 @@ adders = {
     "Lukasiewicz": adder_tr,
     "Gaines-Rescher": adder_2_tr,
 }
-# -------------------------------------------------
+# ---------------------
 
-# N_BITS = number of *value* bits
-# REP_WIDTH = total representation width (the "10 format")
-N_BITS = 4
+N_BITS = 8
 REP_WIDTH = 10
+SIGN_INDEX = REP_WIDTH - 1
 
 
 # ============================================================
-#   TRIT REPRESENTATION HELPERS
+# TWO'S COMPLEMENT FOR TRITS
 # ============================================================
-
-def twos_complement_(uvec_lsb: list[int], width: int) -> list[int]:
-    """LSB-first two's complement for uncertain-binary trits."""
-    full_vec = uvec_lsb + [-1] * (width - len(uvec_lsb))
-
-    out = []
+def twos_complement_(vec, width):
+    vec = vec[:] + [-1] * (width - len(vec))
+    result = []
     found_one = False
-
-    for t in full_vec:
+    for t in vec:
         if not found_one:
-            out.append(+1 if t == +1 else -1 if t == -1 else 0)
             if t == +1:
+                result.append(+1)
                 found_one = True
+            elif t == -1:
+                result.append(-1)
+            else:
+                result.append(0)
         else:
             if t == +1:
-                out.append(-1)
+                result.append(-1)
             elif t == -1:
-                out.append(+1)
+                result.append(+1)
             else:
-                out.append(0)
+                result.append(0)
+    return result
 
-    return out
 
-
-def trits_to_decimal_bounds(bits):
-    """
-    Compute (min_value, max_value) bounds for a *positive* word.
-
-    Semantics:
-        1  -> definitely contributes 2^i
-        -1 -> definitely contributes 0
-        0  -> uncertain in [0, 2^i]
-
-    We use the full REP_WIDTH word (bits[0] LSB).
-    """
+# ============================================================
+# MAGNITUDE BOUNDS
+# ============================================================
+def magnitude_bounds(bits):
     mn = 0
     mx = 0
     for i, t in enumerate(bits):
@@ -78,129 +70,176 @@ def trits_to_decimal_bounds(bits):
     return mn, mx
 
 
+# ============================================================
+# SIGN-AWARE DECODING
+# ============================================================
+def decode_bounds_from_trits(trits):
+    mn = 0
+    mx = 0
+
+    # bits 0..8 behave normally
+    for i, t in enumerate(trits[:-1]):   # up to SIGN_INDEX-1
+        w = (1 << i)
+        if t == 1:
+            mn += w
+            mx += w
+        elif t == 0:
+            mx += w
+        # t == -1 → contributes nothing
+
+    # handle sign trit
+    s = trits[SIGN_INDEX]
+    w = (1 << SIGN_INDEX)    # weight of the sign bit (e.g., 512)
+
+    if s == 1:
+        # definitely negative contribution
+        mn -= w
+        mx -= w
+    elif s == 0:
+        # uncertain between 0 and -2^SIGN_INDEX
+        # min includes negative contribution
+        mn -= w
+        # max = no contribution (0)
+        # so mx unchanged
+        pass
+    elif s == -1:
+        # definitely no contribution
+        pass
+
+    return mn, mx
+
+
+# ============================================================
+# ADDER EXECUTION
+# ============================================================
 def adder_sum_trits(adder_func, A, B):
-    """Apply a ternary full adder bitwise over two 10-trit words."""
     carry = -1
-    res = []
-    for i in range(len(A)):
+    out = []
+    for i in range(REP_WIDTH):
         s, carry = adder_func(A[i], B[i], carry)
-        res.append(s)
-    if carry != -1:
-        res.append(carry)
-    return res
+        out.append(s)
+    return out[:REP_WIDTH]
+
+
+def adder_output_bounds(adder_func, A, B):
+    out = adder_sum_trits(adder_func, A, B)
+    return decode_bounds_from_trits(out)
 
 
 def min_value(adder_func, A, B):
-    """Lower bound of numeric value from adder output."""
-    s = adder_sum_trits(adder_func, A, B)
-    v = 0
-    for i, t in enumerate(s):
-        # 1 is definitely 1, everything else is 0 for the min
-        v += ((1 if t == 1 else 0) << i)
-    return v
+    mn, _ = adder_output_bounds(adder_func, A, B)
+    return mn
 
 
 def max_value(adder_func, A, B):
-    """Upper bound of numeric value from adder output."""
-    s = adder_sum_trits(adder_func, A, B)
-    v = 0
-    for i, t in enumerate(s):
-        # -1 is definitely 0, 0 or 1 may contribute
-        v += ((1 if t != -1 else 0) << i)
-    return v
+    _, mx = adder_output_bounds(adder_func, A, B)
+    return mx
 
 
 # ============================================================
-#   GENERATE UNSIGNED (POSITIVE) VECTORS IN WIDTH-10 FORMAT
+# GENERATE VALID WORDS FOR A GIVEN UNCERTAINTY LEVEL
 # ============================================================
-
-def gen_unsigned_vectors(n_bits=N_BITS, width=REP_WIDTH):
+def gen_unsigned_vectors(level, n_bits=N_BITS, width=REP_WIDTH):
     """
-    Generate all *positive* magnitude patterns:
-    - First n_bits trits explore all {-1,0,1}
-    - Remaining bits (width - n_bits) are padded with -1 (definite 0)
+    level = maximum allowed uncertainty depth.
+    Words of the form:
+        [0..0][±1 .. ±1]   with prefix length ≤ level
     """
-    choices = [-1, 0, 1]
-    for core in itertools.product(choices, repeat=n_bits):
-        core = list(core)
-        padding = [-1] * (width - n_bits)
-        yield core + padding
+    for k in range(level + 1):  # prefix of 0's up to 'level'
+        prefix = [0] * k
+        for tail in itertools.product([-1, 1], repeat=n_bits - k):
+            word = prefix + list(tail)
+            padded = word + [-1] * (width - n_bits)
+            yield padded
 
 
 # ============================================================
-#   MAIN EXPERIMENT (WITH POSITIVE & NEGATIVE A, B)
+# RUN EXPERIMENT ACROSS LEVELS 0..8
 # ============================================================
+LEVELS = list(range(0, N_BITS + 1))  # 0..8
+level_results = {adder: {"min": [], "max": [], "mid": []} for adder in adders}
 
-results = {}
+for lvl in LEVELS:
+    print(f"\n=== Testing uncertainty level {lvl} ===")
 
-# All positive base patterns in width-10
-base_vecs = list(gen_unsigned_vectors())
-num_base = len(base_vecs)
-print(f"Base positive patterns: {num_base}")
+    base_vecs = list(gen_unsigned_vectors(lvl))
+    num_base = len(base_vecs)
+    print(f"Valid vectors at this level: {num_base}")
 
-# accumulators per adder
-acc = {name: {"min": [], "max": [], "mid": []} for name in adders}
+    # accumulate error for this level (per adder)
+    acc = {name: {"min": [], "max": [], "mid": []} for name in adders}
 
-# Loop over unordered base pairs (A_core, B_core)
-for idx_a, A_core in enumerate(base_vecs):
-    # Bounds for +A
-    A_pos_min, A_pos_max = trits_to_decimal_bounds(A_core)
+    for i, A_core in enumerate(base_vecs):
+        A_pos_min, A_pos_max = magnitude_bounds(A_core[:SIGN_INDEX])
 
-    for idx_b in range(idx_a, num_base):
-        B_core = base_vecs[idx_b]
-        B_pos_min, B_pos_max = trits_to_decimal_bounds(B_core)
+        for j in range(i, num_base):
+            B_core = base_vecs[j]
+            B_pos_min, B_pos_max = magnitude_bounds(B_core[:SIGN_INDEX])
 
-        # Four sign combinations: (+A,+B), (+A,-B), (-A,+B), (-A,-B)
-        for sign_a in (+1, -1):
-            if sign_a == 1:
-                A_bits = A_core
-                A_min = A_pos_min
-                A_max = A_pos_max
-            else:
-                A_bits = twos_complement_(A_core, width=REP_WIDTH)
-                A_min = -B_pos_max  # careful: we negate *A* magnitude
-                A_min = -A_pos_max
-                A_max = -A_pos_min
-
-            for sign_b in (+1, -1):
-                if sign_b == 1:
-                    B_bits = B_core
-                    B_min = B_pos_min
-                    B_max = B_pos_max
+            # Four sign configurations
+            for sign_a in (+1, -1):
+                if sign_a == +1:
+                    A_bits = A_core[:]
+                    A_min, A_max = A_pos_min, A_pos_max
                 else:
-                    B_bits = twos_complement_(B_core, width=REP_WIDTH)
-                    B_min = -B_pos_max
-                    B_max = -B_pos_min
+                    A_bits = twos_complement_(A_core, REP_WIDTH)
+                    A_min, A_max = -A_pos_max, -A_pos_min
 
-                true_min = A_min + B_min
-                true_max = A_max + B_max
-                true_mid = 0.5 * (true_min + true_max)
+                for sign_b in (+1, -1):
+                    if sign_b == +1:
+                        B_bits = B_core[:]
+                        B_min, B_max = B_pos_min, B_pos_max
+                    else:
+                        B_bits = twos_complement_(B_core, REP_WIDTH)
+                        B_min, B_max = -B_pos_max, -B_pos_min
 
-                # Evaluate each adder
-                for name, func in adders.items():
-                    a_min = min_value(func, A_bits, B_bits)
-                    a_max = max_value(func, A_bits, B_bits)
-                    a_mid = 0.5 * (a_min + a_max)
+                    true_min = A_min + B_min
+                    true_max = A_max + B_max
+                    true_mid = 0.5 * (true_min + true_max)
 
-                    acc[name]["min"].append(abs(a_min - true_min))
-                    acc[name]["max"].append(abs(a_max - true_max))
-                    acc[name]["mid"].append(abs(a_mid - true_mid))
+                    for name, func in adders.items():
+                        a_min = min_value(func, A_bits, B_bits)
+                        a_max = max_value(func, A_bits, B_bits)
+                        a_mid = 0.5 * (a_min + a_max)
 
-# Summarize stats
-for name, d in acc.items():
-    results[name] = {}
-    for key in ("min", "max", "mid"):
-        arr = np.array(d[key], dtype=float)
-        results[name][key] = {
-            "count": int(arr.size),
-            "avg": float(arr.mean()) if arr.size else None,
-            "max": float(arr.max()) if arr.size else None,
-            "var": float(arr.var()) if arr.size else None,
-            "std": float(arr.std()) if arr.size else None,
-        }
+                        acc[name]["min"].append(abs(a_min - true_min))
+                        acc[name]["max"].append(abs(a_max - true_max))
+                        acc[name]["mid"].append(abs(a_mid - true_mid))
 
-out_file = "../uncertainty_results_signed_10bits.json"
-with open(out_file, "w") as f:
-    json.dump(results, f, indent=2)
+    # store average errors per level
+    for name in adders:
+        for metric in ["min", "max", "mid"]:
+            arr = np.array(acc[name][metric], float)
+            level_results[name][metric].append(arr.mean())
 
-print(f"Saved {out_file}")
+
+# ============================================================
+# PLOT: ADDER COMPARISON VS UNCERTAINTY LEVEL
+# ============================================================
+def plot_metric(metric):
+    plt.figure(figsize=(10, 6))
+    for name in adders:
+        plt.plot(LEVELS, level_results[name][metric], marker="o", label=name)
+
+    plt.title(f"Average {metric} error vs Uncertainty Level")
+    plt.xlabel("Maximum Uncertainty Level (0..8)")
+    plt.ylabel(f"Mean absolute {metric} error")
+    plt.grid(True, linestyle="--", alpha=0.4)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(f"comparison_{metric}.png", dpi=300)
+    plt.show()
+
+
+plot_metric("min")
+plot_metric("max")
+plot_metric("mid")
+
+
+# ============================================================
+# SAVE SUMMARY
+# ============================================================
+with open("../uncertainty_results_by_level.json", "w") as f:
+    json.dump(level_results, f, indent=2)
+
+print("\nSaved: uncertainty_results_by_level.json")

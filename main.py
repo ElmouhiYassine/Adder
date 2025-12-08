@@ -16,11 +16,11 @@ from Adders.bochvar_external_adder import bochvar_ripple_add
 from Adders.sette_adder import sette_ripple_add
 from Adders.gaines_rescher_adder import gaines_ripple_add
 # ============================================================
-#        HTL CONVOLUTION BENCHMARK — unified image set
+#        HTL CONVOLUTION BENCHMARK
 # ============================================================
 
 def run_htl_convolution_benchmark(
-    num_images=5,
+    num_images=100,
     num_kernels=50,
     K1=5,
     K2=10,
@@ -189,7 +189,7 @@ def run_htl_convolution_benchmark(
 # ============================================================
 
 if __name__ == "__main__":
-    results = run_htl_convolution_benchmark(uncertain_adder=sette_ripple_add)
+    results = run_htl_convolution_benchmark(uncertain_adder=bochvar_ripple_add)
     print("\n===== HTL Benchmark Results =====")
     print("Kernel Wins:", results["total_kernel_wins"])
     print("Kernel Losses:", results["total_kernel_losses"])

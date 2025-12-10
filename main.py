@@ -21,7 +21,7 @@ from Adders.gaines_rescher_adder import gaines_ripple_add
 
 def run_htl_convolution_benchmark(
     num_images=100,
-    num_kernels=50,
+    num_kernels=10,
     K1=5,
     K2=10,
     kernel_size=3,
@@ -189,7 +189,7 @@ def run_htl_convolution_benchmark(
 # ============================================================
 
 if __name__ == "__main__":
-    results = run_htl_convolution_benchmark(uncertain_adder=bochvar_ripple_add)
+    results = run_htl_convolution_benchmark(uncertain_adder=sobocinski_ripple)
     print("\n===== HTL Benchmark Results =====")
     print("Kernel Wins:", results["total_kernel_wins"])
     print("Kernel Losses:", results["total_kernel_losses"])

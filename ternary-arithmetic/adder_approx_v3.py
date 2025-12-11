@@ -3,7 +3,6 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 
-# ---- your adders ----
 from Adders.pesi_op_adder import full_op_adder
 from Adders.sobocinski_adder import map_quasi_adder
 from Adders.strong_kleene_adder import strong_kleene_full_adder
@@ -29,9 +28,6 @@ REP_WIDTH = 10
 SIGN_INDEX = REP_WIDTH - 1
 
 
-# ============================================================
-# TWO'S COMPLEMENT FOR TRITS
-# ============================================================
 def twos_complement_(vec, width):
     vec = vec[:] + [-1] * (width - len(vec))
     result = []
@@ -55,9 +51,6 @@ def twos_complement_(vec, width):
     return result
 
 
-# ============================================================
-# MAGNITUDE BOUNDS
-# ============================================================
 def magnitude_bounds(bits):
     mn = 0
     mx = 0
@@ -70,9 +63,6 @@ def magnitude_bounds(bits):
     return mn, mx
 
 
-# ============================================================
-# SIGN-AWARE DECODING
-# ============================================================
 def decode_bounds_from_trits(trits):
     mn = 0
     mx = 0
@@ -103,15 +93,11 @@ def decode_bounds_from_trits(trits):
         # so mx unchanged
         pass
     elif s == -1:
-        # definitely no contribution
         pass
 
     return mn, mx
 
 
-# ============================================================
-# ADDER EXECUTION
-# ============================================================
 def adder_sum_trits(adder_func, A, B):
     carry = -1
     out = []
@@ -153,9 +139,7 @@ def gen_unsigned_vectors(level, n_bits=N_BITS, width=REP_WIDTH):
             yield padded
 
 
-# ============================================================
-# RUN EXPERIMENT ACROSS LEVELS 0..8
-# ============================================================
+
 LEVELS = list(range(0, N_BITS + 1))  # 0..8
 level_results = {adder: {"min": [], "max": [], "mid": []} for adder in adders}
 
@@ -213,22 +197,38 @@ for lvl in LEVELS:
             level_results[name][metric].append(arr.mean())
 
 
-# ============================================================
-# PLOT: ADDER COMPARISON VS UNCERTAINTY LEVEL
-# ============================================================
+
 def plot_metric(metric):
     plt.figure(figsize=(10, 6))
-    for name in adders:
-        plt.plot(LEVELS, level_results[name][metric], marker="o", label=name)
+
+    num_adders = len(adders)
+    offset_range = 0.15
+    offsets = np.linspace(-offset_range, offset_range, num_adders)
+
+    for (idx, name), offset in zip(enumerate(adders), offsets):
+        x_shifted = np.array(LEVELS) + offset
+
+        plt.plot(
+            x_shifted,
+            level_results[name][metric],
+            marker="o",
+            label=name
+        )
 
     plt.title(f"Average {metric} error vs Uncertainty Level")
-    plt.xlabel("Maximum Uncertainty Level (0..8)")
+    plt.xlabel("Uncertainty level in an 8-bit number")
     plt.ylabel(f"Mean absolute {metric} error")
     plt.grid(True, linestyle="--", alpha=0.4)
     plt.legend()
+
+    # 🔥 Force x-axis ticks to show every level 0..8
+    plt.xticks(LEVELS)
+
     plt.tight_layout()
     plt.savefig(f"comparison_{metric}.png", dpi=300)
     plt.show()
+
+
 
 
 plot_metric("min")
@@ -236,9 +236,7 @@ plot_metric("max")
 plot_metric("mid")
 
 
-# ============================================================
-# SAVE SUMMARY
-# ============================================================
+
 with open("../uncertainty_results_by_level.json", "w") as f:
     json.dump(level_results, f, indent=2)
 

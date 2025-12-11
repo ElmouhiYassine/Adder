@@ -261,8 +261,8 @@ from Adders.gaines_rescher_adder import gaines_ripple_add
 # ============================================================
 
 def run_htl_convolution_benchmark(
-    num_images=50,
-    num_kernels=10,
+    num_images=100,
+    num_kernels=50,
     K1=5,
     K2=10,
     kernel_size=3,

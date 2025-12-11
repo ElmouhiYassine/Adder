@@ -22,8 +22,8 @@ from Adders.gaines_rescher_adder import gaines_ripple_add
 # ============================================================
 
 def run_htl_convolution_benchmark(
-    num_images=50,
-    num_kernels=10,
+    num_images=5,
+    num_kernels=5,
     K1=5,
     K2=10,
     kernel_size=3,
@@ -77,6 +77,7 @@ def run_htl_convolution_benchmark(
         for img_index, img in enumerate(images):
 
             for σ in noise_levels:
+                
                 for sampler in noise_samplers:
                     # Noise generation depending on sampler
                     if sampler == "gaussian":
@@ -296,7 +297,7 @@ def run_htl_convolution_benchmark(
 
     rng = np.random.default_rng(seed)
         # list of noise sampling methods to evaluate. supported: 'gaussian', 'uniform', 'salt_pepper'
-        noise_samplers=None,
+    noise_samplers=None,
     # Loop over kernels
     # ============================================================
     for kernel_index in range(num_kernels):
@@ -316,8 +317,6 @@ def run_htl_convolution_benchmark(
 
             for σ in noise_levels:
 
-                for k = 1 to N
-                # Noise
                 noise = rng.normal(0, σ, size=img.shape).round().astype(int)
                 noise_abs = np.abs(noise)
                 img_noisy = np.clip(img + noise, 0, 255).astype(int)
@@ -330,9 +329,9 @@ def run_htl_convolution_benchmark(
             naive_mae = np.mean(np.abs(naive_conv - clean_conv))
 
                 # HTL encoding + convolution
-                X, _, _ = encode_uint8_to_UV(img_noisy, noise_abs, K1, K2)
+            X, _, _ = encode_uint8_to_UV(img_noisy, noise_abs, K1, K2)
 
-                Y = convolution(
+            Y = convolution(
                     X,
                     kernel,
                     uncertain_adder,            # <<--- NEW ADER HERE
@@ -341,18 +340,18 @@ def run_htl_convolution_benchmark(
                     K2=K2,
                 )
 
-                htl_map = decode_Y_numeric_center(Y, K1, K2)
-                htl_mae = np.mean(np.abs(htl_map - clean_conv))
+            htl_map = decode_Y_numeric_center(Y, K1, K2)
+            htl_mae = np.mean(np.abs(htl_map - clean_conv))
 
                 # Per-kernel tracking
-                kernel_naive_mae.append(naive_mae)
-                kernel_htl_mae.append(htl_mae)
+            kernel_naive_mae.append(naive_mae)
+            kernel_htl_mae.append(htl_mae)
 
                 # Global per-noise tracking
-                mean_naive_mae[σ].append(naive_mae)
-                mean_htl_mae[σ].append(htl_mae)
-                if gain < 0:
-                    total_kernel_losses += 1
+            mean_naive_mae[σ].append(naive_mae)
+            mean_htl_mae[σ].append(htl_mae)
+            if gain < 0:
+                total_kernel_losses += 1
 
                 # Track best win / smallest win (per-image)
                 gain = naive_mae - htl_mae

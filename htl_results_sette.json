@@ -1,0 +1,84 @@
+{
+  "mean_naive_curve": [
+    0.0,
+    8.723021978021979,
+    17.492246407438714,
+    25.959429416737112,
+    34.441183431952666,
+    42.689951394759085,
+    51.17867286559594,
+    53.051010143702456
+  ],
+  "mean_htl_curve": [
+    0.0,
+    16.44460587489434,
+    36.17266166525782,
+    54.55804311073542,
+    69.71607248520709,
+    81.4640067624683,
+    91.43576500422655,
+    93.21282544378697
+  ],
+  "total_kernel_wins": 0,
+  "total_kernel_losses": 7,
+  "kernel_loss_cases": [
+    {
+      "kernel": "gradient_x",
+      "mean_naive_mae": 26.316379437869823,
+      "mean_htl_mae": 57.64761649408285,
+      "difference": 31.331237056213023
+    },
+    {
+      "kernel": "gradient_y",
+      "mean_naive_mae": 25.872191198224854,
+      "mean_htl_mae": 57.47595414201183,
+      "difference": 31.603762943786975
+    },
+    {
+      "kernel": "laplacian_4",
+      "mean_naive_mae": 26.068407914201185,
+      "mean_htl_mae": 60.60109652366864,
+      "difference": 34.532688609467456
+    },
+    {
+      "kernel": "laplacian_8",
+      "mean_naive_mae": 42.00043823964497,
+      "mean_htl_mae": 86.06060650887574,
+      "difference": 44.060168269230765
+    },
+    {
+      "kernel": "emboss_diag",
+      "mean_naive_mae": 26.171074334319528,
+      "mean_htl_mae": 57.74695451183432,
+      "difference": 31.57588017751479
+    },
+    {
+      "kernel": "box_blur",
+      "mean_naive_mae": 47.97382581360947,
+      "mean_htl_mae": 57.120621301775145,
+      "difference": 9.146795488165672
+    },
+    {
+      "kernel": "identity",
+      "mean_naive_mae": 9.94125924556213,
+      "mean_htl_mae": 10.975633321005917,
+      "difference": 1.0343740754437878
+    }
+  ],
+  "best_win": {
+    "gain": 18.542899408284015,
+    "kernel": "laplacian_8",
+    "sigma": 30,
+    "image_index": 30,
+    "naive_mae": 93.27810650887574,
+    "htl_mae": 74.73520710059172
+  },
+  "smallest_win": {
+    "gain": 0.004437869822485396,
+    "kernel": "identity",
+    "sigma": 5,
+    "image_index": 26,
+    "naive_mae": 3.4068047337278107,
+    "htl_mae": 3.4023668639053253
+  }
+}

@@ -263,7 +263,7 @@ def convolution(X: np.ndarray,
     V = X[:, :, K1:]
 
     U_trunc, carry_vals, carry_mask = U_pass(
-        U, kernel, ripple_add, carry_policy="center"
+        U, kernel, ripple_add, carry_policy="definite"
     )
 
     V_pre = V_pass(V, kernel, balanced_ternary_add)

@@ -1,0 +1,84 @@
+{
+  "mean_naive_curve": [
+    0.0,
+    8.723021978021979,
+    17.492246407438714,
+    25.959429416737112,
+    34.441183431952666,
+    42.689951394759085,
+    51.17867286559594,
+    53.051010143702456
+  ],
+  "mean_htl_curve": [
+    0.0,
+    30.891140109890113,
+    33.746246830092986,
+    37.15864116652578,
+    42.2195657227388,
+    47.74929628064244,
+    54.09836538461538,
+    55.77176775147928
+  ],
+  "total_kernel_wins": 0,
+  "total_kernel_losses": 7,
+  "kernel_loss_cases": [
+    {
+      "kernel": "gradient_x",
+      "mean_naive_mae": 26.316379437869823,
+      "mean_htl_mae": 29.187020155325445,
+      "difference": 2.870640717455622
+    },
+    {
+      "kernel": "gradient_y",
+      "mean_naive_mae": 25.872191198224854,
+      "mean_htl_mae": 26.997236501479293,
+      "difference": 1.1250453032544385
+    },
+    {
+      "kernel": "laplacian_4",
+      "mean_naive_mae": 26.068407914201185,
+      "mean_htl_mae": 30.69764700443787,
+      "difference": 4.629239090236684
+    },
+    {
+      "kernel": "laplacian_8",
+      "mean_naive_mae": 42.00043823964497,
+      "mean_htl_mae": 58.78845968934911,
+      "difference": 16.78802144970414
+    },
+    {
+      "kernel": "emboss_diag",
+      "mean_naive_mae": 26.171074334319528,
+      "mean_htl_mae": 27.68573964497041,
+      "difference": 1.5146653106508836
+    },
+    {
+      "kernel": "box_blur",
+      "mean_naive_mae": 47.97382581360947,
+      "mean_htl_mae": 79.59890902366864,
+      "difference": 31.625083210059167
+    },
+    {
+      "kernel": "identity",
+      "mean_naive_mae": 9.94125924556213,
+      "mean_htl_mae": 10.975633321005917,
+      "difference": 1.0343740754437878
+    }
+  ],
+  "best_win": {
+    "gain": 40.69230769230769,
+    "kernel": "laplacian_8",
+    "sigma": 31,
+    "image_index": 63,
+    "naive_mae": 86.71597633136095,
+    "htl_mae": 46.023668639053255
+  },
+  "smallest_win": {
+    "gain": 0.0022189349112480272,
+    "kernel": "gradient_y",
+    "sigma": 31,
+    "image_index": 51,
+    "naive_mae": 43.63461538461539,
+    "htl_mae": 43.63239644970414
+  }
+}

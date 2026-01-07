@@ -1,0 +1,84 @@
+{
+  "mean_naive_curve": [
+    0.0,
+    8.723021978021979,
+    17.492246407438714,
+    25.959429416737112,
+    34.441183431952666,
+    42.689951394759085,
+    51.17867286559594,
+    53.051010143702456
+  ],
+  "mean_htl_curve": [
+    0.0,
+    14.93459108199493,
+    32.519700972104815,
+    48.67310228233305,
+    62.01652261200338,
+    72.71890532544379,
+    82.10122992392223,
+    83.90078825021133
+  ],
+  "total_kernel_wins": 0,
+  "total_kernel_losses": 7,
+  "kernel_loss_cases": [
+    {
+      "kernel": "gradient_x",
+      "mean_naive_mae": 26.316379437869823,
+      "mean_htl_mae": 50.261636464497045,
+      "difference": 23.94525702662722
+    },
+    {
+      "kernel": "gradient_y",
+      "mean_naive_mae": 25.872191198224854,
+      "mean_htl_mae": 49.88577847633136,
+      "difference": 24.013587278106506
+    },
+    {
+      "kernel": "laplacian_4",
+      "mean_naive_mae": 26.068407914201185,
+      "mean_htl_mae": 50.88883690828402,
+      "difference": 24.820428994082835
+    },
+    {
+      "kernel": "laplacian_8",
+      "mean_naive_mae": 42.00043823964497,
+      "mean_htl_mae": 80.6525147928994,
+      "difference": 38.652076553254425
+    },
+    {
+      "kernel": "emboss_diag",
+      "mean_naive_mae": 26.171074334319528,
+      "mean_htl_mae": 50.192553624260356,
+      "difference": 24.021479289940828
+    },
+    {
+      "kernel": "box_blur",
+      "mean_naive_mae": 47.97382581360947,
+      "mean_htl_mae": 54.39978180473372,
+      "difference": 6.425955991124248
+    },
+    {
+      "kernel": "identity",
+      "mean_naive_mae": 9.94125924556213,
+      "mean_htl_mae": 10.975633321005917,
+      "difference": 1.0343740754437878
+    }
+  ],
+  "best_win": {
+    "gain": 25.010355029585796,
+    "kernel": "laplacian_8",
+    "sigma": 30,
+    "image_index": 30,
+    "naive_mae": 93.27810650887574,
+    "htl_mae": 68.26775147928994
+  },
+  "smallest_win": {
+    "gain": 0.004437869822485396,
+    "kernel": "identity",
+    "sigma": 5,
+    "image_index": 26,
+    "naive_mae": 3.4068047337278107,
+    "htl_mae": 3.4023668639053253
+  }
+}

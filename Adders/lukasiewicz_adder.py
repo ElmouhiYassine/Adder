@@ -48,9 +48,7 @@ def luka_or(a: int, b: int) -> int:
 # This is consistent with ternary variational XOR.
 
 def luka_xor(a: int, b: int) -> int:
-    if a == b:
-        return luka_and(a, b)
-    return luka_or(a, b)
+    return luka_and(luka_or(a, b), -luka_and(a, b))
 
 # ============================================================
 # 4) LUKASIEWICZ FULL ADDER FOR ONE DIGIT

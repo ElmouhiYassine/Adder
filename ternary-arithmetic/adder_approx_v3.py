@@ -14,11 +14,11 @@ adder_tr = get_Adder(4)
 adder_2_tr = get_Adder(5)
 
 adders = {
-    "Strong-Kleene": strong_kleene_full_adder,
-    "Sobocinski": map_quasi_adder,
+    "Strong Kleene": strong_kleene_full_adder,
+    "Łukasiewicz": adder_tr,
+    "Sobociński": map_quasi_adder,
     "Bochvar external": adder1,
     "Sette": adder_collab,
-    "Lukasiewicz": adder_tr,
     "Gaines-Rescher": adder_2_tr,
 }
 # ---------------------
@@ -221,7 +221,7 @@ def plot_metric(metric):
     plt.grid(True, linestyle="--", alpha=0.4)
     plt.legend()
 
-    # 🔥 Force x-axis ticks to show every level 0..8
+    # Force x-axis ticks to show every level 0..8
     plt.xticks(LEVELS)
 
     plt.tight_layout()

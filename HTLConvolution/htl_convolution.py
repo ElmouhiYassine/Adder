@@ -2,6 +2,7 @@ import numpy as np
 import math
 from typing import Callable, Tuple, Any
 
+from Adders.sobocinski_adder import sobocinski_ripple
 # Import required helpers
 from HTLConvolution.helpers import (
     fit_width,
@@ -263,7 +264,7 @@ def convolution(X: np.ndarray,
     V = X[:, :, K1:]
 
     U_trunc, carry_vals, carry_mask = U_pass(
-        U, kernel, ripple_add, carry_policy="definite"
+        U, kernel, ripple_add, carry_policy="center"
     )
 
     V_pre = V_pass(V, kernel, balanced_ternary_add)
@@ -293,3 +294,36 @@ def convolution(X: np.ndarray,
             "V_pre": V_pre,
         }
     return Y
+
+
+# def twos_complement_(uvec_lsb: list[int], width: int) -> list[int]:
+#     """LSB-first two's complement for uncertain-binary trits."""
+#     full_vec = uvec_lsb + [-1] * (width - len(uvec_lsb))
+#
+#     out = []
+#     found_one = False
+#
+#     for t in full_vec:
+#         if not found_one:
+#             out.append(+1 if t == +1 else -1 if t == -1 else 0)
+#             if t == +1:
+#                 found_one = True
+#         else:
+#             if t == +1:
+#                 out.append(-1)
+#             elif t == -1:
+#                 out.append(+1)
+#             else:
+#                 out.append(0)
+#
+#     return out
+#
+# def pad_to_ext(vec_lsb: list[int]) -> list[int]:
+#     if len(vec_lsb) < 10:
+#         return vec_lsb + [-1] * (10 - len(vec_lsb))
+#     return vec_lsb[:10]
+#
+# acc = sobocinski_ripple([[1,1,1,1,1,1], twos_complement_([-1,1,1,1,1,1],10)])
+# acc = pad_to_ext(acc)
+#
+# print(acc)

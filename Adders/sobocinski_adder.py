@@ -321,3 +321,5 @@ def sobocinski_ripple(vecs):
             result.append(carry)
 
         return result
+
+# print(sobocinski_ripple([[1,1,1,1,1,1,1,1,1],[1,-1,-1,-1,-1,-1,-1,-1,-1]]))

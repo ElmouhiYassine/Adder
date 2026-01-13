@@ -140,6 +140,7 @@ def run_htl_convolution_benchmark(
 
         fname = f"kernel_plot_{adder_name}_{kernel_name}.png"
         plt.savefig(fname, dpi=300)
+        plt.show()
         plt.close()
 
         print(f"Saved per-kernel plot: {fname}")
@@ -181,7 +182,7 @@ if __name__ == "__main__":
 
     uncertain_adders = {
         "sobocinski": sobocinski_ripple,
-        # "lukasiewicz": luka_ripple_add,
+        #"lukasiewicz": luka_ripple_add,
         # "bochvar": bochvar_ripple_add,
         # "sette": sette_ripple_add,
         # "gaines_rescher": gaines_ripple_add,

@@ -24,7 +24,7 @@ def kleene_or(a, b):
 
 def kleene_xor(a, b):
 
-    return min(max(a,b),-min(a,b))
+    return kleene_and(kleene_or(a,b),-kleene_and(a,b))
 
 
 def strong_kleene_full_adder(a, b, cin = -1):

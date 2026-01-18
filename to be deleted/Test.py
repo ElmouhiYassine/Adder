@@ -1,5 +1,4 @@
 from Adders.strong_kleene_adder import SK_ripple_add
-from Adders.balanced_ternary_adder import balanced_ternary_add
 from Adders.pesi_op_adder import pess_op_ripple
 from Adders.SK_Quasi_adder import ripple_quasi
 from Adders.lukasiewicz_adder import lukasiewicz_ripple

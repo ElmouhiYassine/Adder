@@ -1,12 +1,3 @@
-"""
-Sette Logic – AND, OR, XOR, Full Adder, Ripple Adder
-Compatible with HTL ternary convolution framework.
-Trit values are in {-1, 0, 1}.
-"""
-
-# ============================================================
-#                     SETTE TRUTH TABLES
-# ============================================================
 
 SETTE_AND_TABLE = {
     (0, 1): 1,
@@ -32,46 +23,25 @@ SETTE_OR_TABLE = {
     (1, -1): 1,
 }
 
-# ============================================================
-#                       LOGICAL GATES
-# ============================================================
-
 def sette_and(a: int, b: int) -> int:
-    """Sette AND gate."""
     return SETTE_AND_TABLE[(a, b)]
 
 
 def sette_or(a: int, b: int) -> int:
-    """Sette OR gate."""
     return SETTE_OR_TABLE[(a, b)]
 
 
 def sette_not(x: int) -> int:
-    """Negation: always -x (HTL convention)."""
     return -x
 
 
 def sette_xor(a: int, b: int) -> int:
-    """
-    XOR(a,b) = (a OR b) AND NOT(a AND b)
-    (Do NOT invent — use AND/OR exactly as given.)
-    """
     ab_or = sette_or(a, b)
     ab_and = sette_and(a, b)
     not_and = sette_not(ab_and)
     return sette_and(ab_or, not_and)
 
-# ============================================================
-#                FULL ADDER (ONE TRIT)
-# ============================================================
-
 def sette_add(a: int, b: int, carry: int):
-    """
-    One-digit full adder using Sette XOR, AND, OR:
-
-    sum = XOR(XOR(a,b), carry)
-    carry_out = OR( AND(a,b), AND(carry, XOR(a,b)) )
-    """
 
     ab_xor = sette_xor(a, b)
     sum_digit = sette_xor(ab_xor, carry)
@@ -82,24 +52,14 @@ def sette_add(a: int, b: int, carry: int):
 
     return sum_digit, carry_out
 
-# ============================================================
-#                RIPPLE ADDER (MULTI-VECTOR)
-# ============================================================
-
 def sette_ripple_add(vecs):
-    """
-    Ripple-add a list of vectors (LSB-first trits).
-    vecs = [v1, v2, v3, ...]
-    """
-
     if not vecs:
         return [-1] * 4
 
     result = vecs[0].copy()
-    carry = -1  # neutral element in HTL
+    carry = -1
 
     for vec in vecs[1:]:
-        # Pad vectors to equal length
         L = max(len(result), len(vec))
         A = result + [0] * (L - len(result))
         B = vec + [0] * (L - len(vec))
@@ -114,7 +74,6 @@ def sette_ripple_add(vecs):
         result = new_res
         carry = local_carry
 
-    # Append carry if non-neutral
     if carry != -1:
         result.append(carry)
 

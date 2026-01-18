@@ -53,27 +53,39 @@ def U_pass(U: np.ndarray,
     def int_to_bits(n: int, width: int) -> list[int]:
         return [+1 if (n >> b) & 1 else -1 for b in range(width)]
 
-    def twos_complement_(uvec_lsb: list[int], width: int) -> list[int]:
-        """LSB-first two's complement for uncertain-binary trits."""
-        full_vec = uvec_lsb + [-1] * (width - len(uvec_lsb))
+    def twos_complement_(vec, width, adder_func):
+        # -------------------------------------------------
+        # 1) Pad to full width
+        # -------------------------------------------------
+        x = vec[:] + [-1] * (width - len(vec))  # -1 = definite 0
 
-        out = []
-        found_one = False
-
-        for t in full_vec:
-            if not found_one:
-                out.append(+1 if t == +1 else -1 if t == -1 else 0)
-                if t == +1:
-                    found_one = True
+        # -------------------------------------------------
+        # 2) Bitwise flip
+        #    1 -> -1
+        #   -1 ->  1
+        #    0 ->  0   (uncertainty preserved)
+        # -------------------------------------------------
+        flipped = []
+        for t in x:
+            if t == 1:
+                flipped.append(-1)
+            elif t == -1:
+                flipped.append(1)
             else:
-                if t == +1:
-                    out.append(-1)
-                elif t == -1:
-                    out.append(+1)
-                else:
-                    out.append(0)
+                flipped.append(0)
 
-        return out
+        # -------------------------------------------------
+        # 3) Add +1 using the uncertain adder
+        # -------------------------------------------------
+        one = [1] + [-1] * (width - 1)  # +1 in LSB-first ternary
+        return adder_func([one,flipped])
+        # result = []
+        # for a, b in zip(flipped, one):
+        #     s, carry = adder_func(a, b, carry)
+        #     result.append(s)
+        #
+        # # Ignore overflow beyond width
+        # return result
 
     def resolve_carry(c_segment: list[int], start_bit: int) -> tuple[int, int]:
         """Resolve carries for ± uncertainty policies."""
@@ -184,7 +196,7 @@ def U_pass(U: np.ndarray,
                     if kval == +1:
                         t = pad_to_ext(u)
                     else:
-                        t = twos_complement_(u, U_EXT_WIDTH)
+                        t = twos_complement_(u, U_EXT_WIDTH,ripple_add)
                     terms.append(t)
 
                 acc = terms[0]
@@ -264,7 +276,7 @@ def convolution(X: np.ndarray,
     V = X[:, :, K1:]
 
     U_trunc, carry_vals, carry_mask = U_pass(
-        U, kernel, ripple_add, carry_policy="center"
+        U, kernel, ripple_add, carry_policy="max"
     )
 
     V_pre = V_pass(V, kernel, balanced_ternary_add)
@@ -327,3 +339,78 @@ def convolution(X: np.ndarray,
 # acc = pad_to_ext(acc)
 #
 # print(acc)
+
+# Execute with "center" policy and vec [0,1,1,1,1,1]
+
+# def resolve_carry(c_segment: list[int], start_bit: int, carry_policy: str) -> tuple[int, int]:
+#     """Resolve carries for ± uncertainty policies."""
+#     num_bits = len(c_segment)
+#     sign_bit_index = num_bits - 1
+#     has_zero = any(t == 0 for t in c_segment)
+#
+#     # --- definite ---
+#     if not has_zero:
+#         val = 0
+#         for i, trit in enumerate(c_segment):
+#             bit_pos = start_bit + i
+#             if trit == +1:
+#                 if i == sign_bit_index:
+#                     val -= (1 << bit_pos)
+#                 else:
+#                     val += (1 << bit_pos)
+#         return val, 1
+#
+#     # --- uncertain ---
+#     if carry_policy == "definite":
+#         return 0, 1
+#
+#     elif carry_policy == "max":
+#         val = 0
+#         for i, trit in enumerate(c_segment):
+#             bit_pos = start_bit + i
+#             is_sign = (i == sign_bit_index)
+#             eff = trit
+#             if trit == 0:
+#                 eff = -1 if is_sign else +1
+#             if eff == +1:
+#                 if is_sign:
+#                     val -= (1 << bit_pos)
+#                 else:
+#                     val += (1 << bit_pos)
+#         return val, 1
+#
+#     elif carry_policy == "min":
+#         val = 0
+#         for i, trit in enumerate(c_segment):
+#             bit_pos = start_bit + i
+#             is_sign = (i == sign_bit_index)
+#             eff = trit
+#             if trit == 0:
+#                 eff = +1 if is_sign else -1
+#             if eff == +1:
+#                 if is_sign:
+#                     val -= (1 << bit_pos)
+#                 else:
+#                     val += (1 << bit_pos)
+#         return val, 1
+#
+#     elif carry_policy == "center":
+#         valf = 0.0
+#         for i, trit in enumerate(c_segment):
+#             bit_pos = start_bit + i
+#             is_sign = (i == sign_bit_index)
+#             p1 = 1.0 if trit == +1 else (0.0 if trit == -1 else 0.5)
+#             if is_sign:
+#                 valf -= p1 * (1 << bit_pos)
+#             else:
+#                 valf += p1 * (1 << bit_pos)
+#         return int(round(valf)), 1
+#
+#     return 0, 1
+# vec = [0, 1, 1, 1, 1, 1]
+# result = resolve_carry(vec, start_bit=4, carry_policy="max")
+# print(f"Input vector: {vec}")
+# print(f"Carry policy: center")
+# print(f"Result: {result}")
+# print(f"\nDetailed breakdown:")
+# print(f"Value: {result[0]}, Flags: {result[1]}")

@@ -162,10 +162,10 @@ if __name__ == "__main__":
 
     df = run_htl_convolution_benchmark_table(
         num_images=100,
-        dataset="mnist",
+        dataset="fashion",
         noise_levels=[0, 5, 10, 15, 20, 25, 30, 31],
         n_noise_realizations=5,
-        base_seed=1234,
+        base_seed=4567,
         adders=uncertain_adders,
     )
 
@@ -175,7 +175,7 @@ if __name__ == "__main__":
     print(df.to_string(index=False))
 
 
-    df.to_csv("htl_negative_benchmark_results.csv", index=False)
+    df.to_csv("htl_benchmark_results.csv", index=False)
     print("\nSaved results to: htl_benchmark_results.csv")
 
     # noise_levels = [0, 5, 10, 15, 20, 25, 30, 31]

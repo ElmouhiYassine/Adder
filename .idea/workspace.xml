@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81735eed-1024-46c2-a58f-05f316383b68" name="Changes" comment="&quot;updates on HyTL&quot;">
+    <list default="true" id="81735eed-1024-46c2-a58f-05f316383b68" name="Changes" comment="&quot;add negatives kernel results&quot;">
+      <change afterPath="$PROJECT_DIR$/htl_negative_benchmark_results_100_emnist_feed4567.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HTLConvolution/dataset_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/HTLConvolution/dataset_loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htl_benchmark_results.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -202,7 +205,7 @@
       <workItem from="1768467959409" duration="17907000" />
       <workItem from="1768553309721" duration="13233000" />
       <workItem from="1768759405094" duration="23290000" />
-      <workItem from="1768861103125" duration="2208000" />
+      <workItem from="1768861103125" duration="7703000" />
     </task>
     <task id="LOCAL-00001" summary="set commit - no changes">
       <option name="closed" value="true" />
@@ -236,7 +239,23 @@
       <option name="project" value="LOCAL" />
       <updated>1768770293768</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="&quot;add negatives results&quot;">
+      <option name="closed" value="true" />
+      <created>1768892781288</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1768892781288</updated>
+    </task>
+    <task id="LOCAL-00006" summary="&quot;add negatives kernel results&quot;">
+      <option name="closed" value="true" />
+      <created>1768894953667</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1768894953667</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,7 +277,9 @@
     <MESSAGE value="set commit - &quot;update main, add ternary kernels&quot;" />
     <MESSAGE value="set commit - &quot;update  some adders&quot;" />
     <MESSAGE value="&quot;updates on HyTL&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;updates on HyTL&quot;" />
+    <MESSAGE value="&quot;add negatives results&quot;" />
+    <MESSAGE value="&quot;add negatives kernel results&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;add negatives kernel results&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -312,7 +333,7 @@
     <SUITE FILE_PATH="coverage/Adder$post_processing.coverage" NAME="post_processing Coverage Results" MODIFIED="1747078688702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Adder$Image_processing.coverage" NAME="Image_processing Coverage Results" MODIFIED="1750272327750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Adder$strong_kleene.coverage" NAME="strong_kleene Coverage Results" MODIFIED="1757638230669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Adders" />
-    <SUITE FILE_PATH="coverage/Adder$main.coverage" NAME="main Coverage Results" MODIFIED="1768861135885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Adder$main.coverage" NAME="main Coverage Results" MODIFIED="1768902137165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Adder$adder_approximations.coverage" NAME="adder_approximations Coverage Results" MODIFIED="1754998729701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Adder$Balanced_Ternary_Adder.coverage" NAME="Balanced_Ternary_Adder Coverage Results" MODIFIED="1757637852636" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Adders" />
     <SUITE FILE_PATH="coverage/Adder$Test.coverage" NAME="Test Coverage Results" MODIFIED="1763567433342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

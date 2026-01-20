@@ -161,8 +161,8 @@ if __name__ == "__main__":
 
 
     df = run_htl_convolution_benchmark_table(
-        num_images=100,
-        dataset="fashion",
+        num_images=5,
+        dataset="emnist",
         noise_levels=[0, 5, 10, 15, 20, 25, 30, 31],
         n_noise_realizations=5,
         base_seed=4567,

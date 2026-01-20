@@ -1,7 +1,5 @@
 import numpy as np
 
-import numpy as np
-
 
 def load_xmnist_first_N(dataset: str = "mnist", n_samples: int = 64) -> np.ndarray:
     """
@@ -18,12 +16,18 @@ def load_xmnist_first_N(dataset: str = "mnist", n_samples: int = 64) -> np.ndarr
             from torchvision.datasets import FashionMNIST as DS
         elif dataset.lower() == "kmnist":
             from torchvision.datasets import KMNIST as DS
+        elif dataset.lower() == "emnist":
+            from torchvision.datasets import EMNIST as DS
         else:
-            raise ValueError("dataset must be 'mnist', 'fashion', or 'kmnist'")
+            raise ValueError("dataset must be 'mnist', 'fashion', 'kmnist', or 'emnist'")
 
         # Load the dataset
-        ds = DS(root="./data", train=True, download=True,
-                transform=transforms.ToTensor())
+        if dataset.lower() == "emnist":
+            ds = DS(root="./data", split="balanced", train=True, download=True,
+                    transform=transforms.ToTensor())
+        else:
+            ds = DS(root="./data", train=True, download=True,
+                    transform=transforms.ToTensor())
 
         imgs = []
         for k in range(min(n_samples, len(ds))):

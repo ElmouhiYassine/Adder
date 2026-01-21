@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('fashion_positive_100_images.csv')
+df = pd.read_csv('to be deleted/fashion_positive_100_images.csv')
 
 
 name_map = {

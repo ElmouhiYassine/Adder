@@ -2,7 +2,6 @@ import itertools
 import numpy as np
 import matplotlib.pyplot as plt
 
-from Adders.pesi_op_adder import full_op_adder
 from Adders.sobocinski_adder import map_quasi_adder
 from Adders.strong_kleene_adder import strong_kleene_full_adder
 from Adders.Ternary_New_Adder import get_Adder
@@ -28,17 +27,9 @@ SIGN_INDEX = REP_WIDTH - 1
 
 
 def twos_complement_(vec, width, adder_func):
-    # -------------------------------------------------
-    # 1) Pad to full width
-    # -------------------------------------------------
-    x = vec[:] + [-1] * (width - len(vec))  # -1 = definite 0
 
-    # -------------------------------------------------
-    # 2) Bitwise flip
-    #    1 -> -1
-    #   -1 ->  1
-    #    0 ->  0   (uncertainty preserved)
-    # -------------------------------------------------
+    x = vec[:] + [-1] * (width - len(vec))
+
     flipped = []
     for t in x:
         if t == 1:
@@ -48,10 +39,8 @@ def twos_complement_(vec, width, adder_func):
         else:
             flipped.append(0)
 
-    # -------------------------------------------------
-    # 3) Add +1 using the uncertain adder
-    # -------------------------------------------------
-    one = [1] + [-1] * (width - 1)   # +1 in LSB-first ternary
+
+    one = [1] + [-1] * (width - 1)
     carry = -1
     result = []
     for a, b in zip(flipped, one):
@@ -74,17 +63,10 @@ def magnitude_bounds(bits):
 
 
 def decode_bounds_from_trits(trits):
-    """
-    Decode (min,max) bounds for a full REP_WIDTH word with the rule:
-      - For i < SIGN_INDEX: standard uncertain-binary contribution (+2^i)
-      - For i == SIGN_INDEX (MSB): negative-weight bit:
-            1 -> contributes -2^SIGN_INDEX
-           -1 -> contributes 0
-            0 -> uncertain in {-2^SIGN_INDEX, 0}
-    """
-    trits = trits[:REP_WIDTH]  # safety
 
-    # magnitude part
+    trits = trits[:REP_WIDTH]
+
+
     mag_mn, mag_mx = magnitude_bounds(trits[:SIGN_INDEX])
 
     # sign bit (negative-weight)

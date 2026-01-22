@@ -44,19 +44,19 @@ def run_htl_convolution_benchmark_table(
     if noise_levels is None:
         noise_levels = [0, 5, 10, 15, 20, 25, 30, 31]
 
-    images = load_xmnist_first_N(dataset, n_samples=num_images).astype(int)
+    images = load_xmnist_first_N(dataset, n_samples=num_images).astype(int) #100
 
     naive_samples = {σ: [] for σ in noise_levels}
     htl_samples = {name: {σ: [] for σ in noise_levels} for name in adders}
 
 
-    for kernel_name, kernel in kernels:
+    for kernel_name, kernel in kernels: # * 11
         print(kernel_name)
         kernel_np = np.array(kernel, dtype=int)
 
         for img_idx, img in enumerate(images):
 
-            for noise_id in range(n_noise_realizations):
+            for noise_id in range(n_noise_realizations): # * 5
 
 
                 seed = (

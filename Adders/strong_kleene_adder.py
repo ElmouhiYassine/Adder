@@ -2,7 +2,6 @@
 
 def kleene_and(a, b):
 
-    # false dominates, true only if both true, else unknown
     if a == -1 or b == -1:
         return -1
     if a == 1 and b == 1:
@@ -26,7 +25,6 @@ def kleene_xor(a, b):
 
 def strong_kleene_full_adder(a, b, cin = -1):
 
-    # sum
     s1 = kleene_xor(a, b)
     sum_bit = kleene_xor(s1, cin)
 
@@ -41,7 +39,7 @@ def SK_ripple_add(vecs):
         return [-1] * 4
 
     result = vecs[0].copy()
-    carry = -1  # neutral
+    carry = -1
 
     for vec in vecs[1:]:
         new_result = []

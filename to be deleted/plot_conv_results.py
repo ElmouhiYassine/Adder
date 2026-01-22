@@ -39,20 +39,20 @@ for i, key in enumerate(ordered_keys):
     style = style_map[key]
 
     plt.errorbar(
-        x_values + offset,
-        df[avg_col],
+        x_values,
+        # df[avg_col],
         yerr=df[sd_col],
         label=full_name,
         marker=style['marker'],
         color=style['color'],
         capsize=3,
-        linestyle='-',
-        linewidth=1.5,
+        # linestyle='-',
+        # linewidth=1.5,
         alpha=0.8
     )
 
 plt.xticks(x_values)
-plt.xlabel('Noise value')
+plt.xlabel('Uncertainty (max value)')
 plt.ylabel('Average Error (MAE)')
 plt.title('Adder Performance Comparison on Fashion MNIST using Positive Kernels')
 plt.legend(loc='upper left')

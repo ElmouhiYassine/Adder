@@ -4,7 +4,7 @@ from typing import Callable, Tuple, Any
 
 from Adders.sobocinski_adder import sobocinski_ripple
 # Import required helpers
-from HTLConvolution.helpers import (
+from HyTLConvolution.helpers import (
     fit_width,
     int_to_balanced_ternary,
 )

@@ -45,7 +45,7 @@ def luka_add(a: int, b: int, carry: int):
 
     return sum_digit, carry_out
 
-def luka_ripple_add(vecs):
+def luka_ripple(vecs):
 
     if not vecs:
         return [-1] * 4

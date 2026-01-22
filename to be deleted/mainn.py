@@ -1,13 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from HTLConvolution.dataset_loader import load_xmnist_first_N
-from HTLConvolution.helpers import (
+from HyTLConvolution.dataset_loader import load_xmnist_first_N
+from HyTLConvolution.helpers import (
     encode_uint8_to_UV,
     decode_Y_numeric_center,
     conv2d_valid_int,
 )
-from HTLConvolution.htl_convolution import convolution
+from HyTLConvolution.hytl_convolution import convolution
 
 from Adders.sobocinski_adder import sobocinski_ripple   # default adder
 from Adders.balanced_ternary_adder import balanced_ternary_add

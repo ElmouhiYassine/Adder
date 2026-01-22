@@ -186,10 +186,7 @@ def ternary_ripple_adder(A_list, B_list):
 #
 # sum_result = ternary_ripple_adder(A, B)
 # print("Sum:", sum_result)
-#%%
-#TODO: tell the system to replace .5 by 0 and calculate the result
-# Find a different AND or XOR that could do this, maybe Middle Kleene?
-#%%
+
 def full_q_adder(A, B, Cin):    
     sum_q = tqxor(A,tqxor(B,Cin))
     carry_out_q = tqor(tqand(A,B),tqand(Cin,tqxor(A,B)))# C'=(A.B)+(C.(A.XOR.B))
@@ -205,8 +202,7 @@ def full_q_adder(A, B, Cin):
 #             print(f"{A:>3} {B:>3} {Cin:>4} | {s:>4} {c:>5}")
 
 #%%
-def map_quasi_adder(a, b, cin):
-    # Renommer map -> to_float
+def sobocinski_add(a, b, cin):
     to_float = {
         -1: 0.0,
          0: 0.5,
@@ -218,17 +214,13 @@ def map_quasi_adder(a, b, cin):
         1.0:  1,
     }
 
-    # Convertir en float
     af = to_float[a]
     bf = to_float[b]
     cf = to_float[cin]
 
-    # Calculer sum et carry en logique quasi
     sf = tqxor(tqxor(af, bf), cf)
     cf_out = tqor(tqand(af, bf), tqand(cf, tqxor(af, bf)))
 
-    # Normaliser sf et cf_out à l’un des trois floats exacts
-    # (on se prémunit contre de très légères imprécisions)
     def snap(x):
         for k in (0.0, 0.5, 1.0):
             if abs(x - k) < 1e-8:
@@ -238,20 +230,10 @@ def map_quasi_adder(a, b, cin):
     sf_snapped = snap(sf)
     cf_snapped = snap(cf_out)
 
-    # Reconvertir en trit
     sum_trit, carry_trit = to_trit[sf_snapped], to_trit[cf_snapped]
     return sum_trit, carry_trit
 
-
-# print("A B Cin | Sum Carry")
-# for A in (0,-1, 1):
-#     for B in (0,-1, 1):
-#         for Cin in (0,-1, 1):
-#             s, c = map_quasi_adder(A, B, Cin)
-#             print(f"{A:>3} {B:>3} {Cin:>4} | {s:>4} {c:>5}")
-#%%
 def ternary_ripple_qadder(A_list, B_list):
-    # Pad both lists to the same length
     max_len = max(len(A_list), len(B_list))
     A_list = A_list[::-1] + [0] * (max_len - len(A_list))  # Reverse for LSB-first
     B_list = B_list[::-1] + [0] * (max_len - len(B_list))
@@ -266,43 +248,9 @@ def ternary_ripple_qadder(A_list, B_list):
     if carry != 0:
         result.append(carry)
 
-    return result[::-1]  # Return to MSB-first order
-#%%
-# A = [.5, 1, 1]   # Represents min 1
-# B = [1, .5, .5]   # min 4
-#
-# sum_result = ternary_ripple_qadder(A, B)
-# print("Sum:", sum_result)
-#%%
-# A = [1, .5, 1]   # min 5, max 7
-# B = [1, .5, .5]   # min 4, max 7: qadd is 13 so closer to 14 than to 9
-#
-# sum_result = ternary_ripple_qadder(A, B)
-# print("Sum:", sum_result)
-#%%
-# A = [.5, 1, .5]   # min 2, max 7
-# B = [.5, 1, .5]   # min 2, max 7: qadd is 15 so closer to 14 than to 4
-#
-# sum_result = ternary_ripple_qadder(A, B)
-# print("Sum:", sum_result)
-#%%
-# A = [.5, 1, 1]   # min 2, max 7
-# B = [.5, 1, 1]   # min 2, max 7: qadd is 13 so closer to 14 than to 9
-#
-# sum_result = ternary_ripple_adder(A, B)
-# print("Sum:", sum_result)
-#%%
-## Upshot: resolution here is sometimes conservative and sometimes not.
-# for a in [-1,0,1] :
-#     for b in [-1,0,1] :
-#         for cin in [-1,0,1] :
-#             s, c = map_quasi_adder(a, b, cin)
-#             print(f"a={a}, b={b}, cin={cin} -> sum={s}, carry={c}")
+    return result[::-1]
+
 def sobocinski_ripple(vecs):
-    # # Pad both lists to the same length
-    # max_len = max(len(A_list), len(B_list))
-    # A_list = A_list[::-1] + [0] * (max_len - len(A_list))  # Reverse for LSB-first
-    # B_list = B_list[::-1] + [0] * (max_len - len(B_list))
         if not vecs:
             return [-1] * 4
 
@@ -312,7 +260,7 @@ def sobocinski_ripple(vecs):
         for vec in vecs[1:]:
             new_result = []
             for a, b in zip(result, vec):
-                s, carry = map_quasi_adder(a, b, carry)
+                s, carry = sobocinski_add(a, b, carry)
                 new_result.append(s)
             result = new_result
 

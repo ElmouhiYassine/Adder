@@ -2,11 +2,6 @@ import numpy as np
 import math
 from typing import Any
 
-
-# ========================================================
-#                     BASIC HELPERS
-# ========================================================
-
 def needed_bt_width(max_abs_sum: int) -> int:
     n = 1
     while (3**n - 1)//2 < max_abs_sum:
@@ -52,10 +47,6 @@ def bits_to_int(lsb_vec: list[int]) -> int:
 def int_to_bits(n: int, width: int) -> list[int]:
     return [+1 if (n >> b) & 1 else -1 for b in range(width)]
 
-
-# ========================================================
-#                 UNCERTAINTY MASKING
-# ========================================================
 
 def uncertainty_mask_threshold(noise_abs: int, K1: int):
     mask = np.ones(K1, dtype=bool)

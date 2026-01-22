@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def balanced_ternary_add(A, B):
+def BT_add(A, B):
 
     n = max(len(A), len(B))
     carry = 0
@@ -13,7 +13,7 @@ def balanced_ternary_add(A, B):
 
         total = a + b + carry
 
-        carry = (total + 1) // 3  # Integer division
+        carry = (total + 1) // 3
         digit = total - 3 * carry
 
         result.append(digit)
@@ -30,16 +30,16 @@ def BT_ripple_add(vecs):
     result = vecs[0].copy()
 
     for vec in vecs[1:]:
-        new_result = balanced_ternary_add(vec, result)
+        new_result = BT_add(vec, result)
         result = new_result
 
     return result
 
-# Test with your example
-A = [1, -1, 1]  # 1*3⁰ + (-1)*3¹ + 1*3² = 1 - 3 + 9 = 7
-B = [1, 0, -1]  # 1*3⁰ + 0*3¹ + (-1)*3² = 1 + 0 - 9 = -8
-
-sum_result = balanced_ternary_add(A, B)
+# # example
+# A = [1, -1, 1]  # 1*3⁰ + (-1)*3¹ + 1*3² = 1 - 3 + 9 = 7
+# B = [1, 0, -1]  # 1*3⁰ + 0*3¹ + (-1)*3² = 1 + 0 - 9 = -8
+#
+# sum_result = balanced_ternary_add(A, B)
 # print("Sum in balanced ternary (LSB first):", sum_result)
 #
 

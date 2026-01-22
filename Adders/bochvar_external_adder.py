@@ -55,10 +55,6 @@ def bochvar_add(a: int, b: int, carry: int):
     return sum_digit, carry_out
 
 
-# ============================================================
-#               MULTI-VECTOR RIPPLE ADDER (LSB-FIRST)
-# ============================================================
-
 def bochvar_ripple_add(vecs):
 
     if not vecs:
